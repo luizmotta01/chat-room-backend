@@ -1,8 +1,11 @@
+using Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MottaDevelopments.ChatRoom.Identity.Application.Autofac;
+using MottaDevelopments.ChatRoom.Identity.Application.Registrations;
 using MottaDevelopments.MicroServices.Application.Consul;
 
 namespace MottaDevelopments.ChatRoom.Identity.Api
@@ -30,7 +33,9 @@ namespace MottaDevelopments.ChatRoom.Identity.Api
                         .SetIsOriginAllowed((host) => true)
                         .AllowCredentials());
             });
-
+            
+            services.AddIdentityDbContext();
+            
             //JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
             //var identityUrl = Configuration.GetValue<string>("IdentityUrl");
@@ -50,6 +55,8 @@ namespace MottaDevelopments.ChatRoom.Identity.Api
 
             services.AddControllers();
         }
+
+        public void ConfigureContainer(ContainerBuilder container) => container.AddAutoFacModules();
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {

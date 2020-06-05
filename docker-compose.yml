@@ -7,6 +7,8 @@ services:
     build:
       context: .
       dockerfile: src/identity/MottaDevelopments.ChatRoom.Api/Dockerfile
+    depends_on:
+      - sqlserver
 
   mottadevelopments.chatroom.gateway:
     container_name: mottadevelopments-chatroom-gateway
@@ -20,3 +22,7 @@ services:
     command: consul agent -dev -log-level=warn -ui -client=0.0.0.0
     hostname: consul
     container_name: consul
+  
+  sqlserver:
+    container_name: sqlserver
+    image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
