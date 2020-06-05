@@ -5,8 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Dapper\" />
-    <Folder Include="EntityFramework\Context\" />
+    <PackageReference Include="Dapper" Version="2.0.35" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MottaDevelopments.MicroServices.Domain\MottaDevelopments.MicroServices.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
