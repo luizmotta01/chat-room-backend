@@ -9,8 +9,4 @@
     <ProjectReference Include="..\MottaDevelopments.ChatRoom.Identity.Domain\MottaDevelopments.ChatRoom.Identity.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="EntityFramework\Configurations\" />
-  </ItemGroup>
-
 </Project>
