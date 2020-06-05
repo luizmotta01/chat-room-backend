@@ -11,7 +11,7 @@ namespace MottaDevelopments.MicroServices.Infrastructure.EntityFramework.Context
     {
         private readonly IMediator _mediator;
 
-        public virtual string MigrationTableName { get; set; } = "__EFMigrationsHistory";
+        public static string MigrationTableName = "__EFMigrationsHistory";
 
         public DbContextBase(DbContextOptions options, IMediator mediator) : base(options) => _mediator = mediator;
 

@@ -1,6 +1,4 @@
-﻿
-using System;
-using Consul;
+﻿using Consul;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MottaDevelopments.MicroServices.Application.Services;
@@ -9,17 +7,19 @@ namespace MottaDevelopments.MicroServices.Application.Consul
 {
     public static class Extensions
     {
-        public static void RegisterConsulServices(this IServiceCollection services)
+        public static IServiceCollection AddConsulServices(this IServiceCollection serviceCollection)
         {
             var serviceDiscoveryConfiguration = ServiceDiscoveryConfigurationFactory.GetServiceConfig();
             
             var consulClient = CreateConsulClient(serviceDiscoveryConfiguration);
             
-            services.AddSingleton(serviceDiscoveryConfiguration);
+            serviceCollection.AddSingleton(serviceDiscoveryConfiguration);
             
-            services.AddSingleton<IHostedService, ServiceDiscoveryHostedService>();
+            serviceCollection.AddSingleton<IHostedService, ServiceDiscoveryHostedService>();
             
-            services.AddSingleton<IConsulClient, ConsulClient>(serviceProvider => consulClient);
+            serviceCollection.AddSingleton<IConsulClient, ConsulClient>(serviceProvider => consulClient);
+
+            return serviceCollection;
         }
 
         private static ConsulClient CreateConsulClient(ServiceDiscoveryConfiguration serviceConfig) =>

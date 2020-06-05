@@ -1,5 +1,4 @@
 ﻿using System;
-using Microsoft.Extensions.Configuration;
 
 namespace MottaDevelopments.MicroServices.Application.Services
 {

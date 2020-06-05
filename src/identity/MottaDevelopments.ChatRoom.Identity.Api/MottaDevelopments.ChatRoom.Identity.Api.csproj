@@ -15,5 +15,9 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MottaDevelopments.ChatRoom.Identity.Application\MottaDevelopments.ChatRoom.Identity.Application.csproj" />
+  </ItemGroup>
+
 
 </Project>

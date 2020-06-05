@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-using MottaDevelopments.MicroServices.Domain.EnvironmentVariables;
+﻿using MottaDevelopments.MicroServices.Domain.EnvironmentVariables;
 
 namespace MottaDevelopments.MicroServices.Infrastructure.EntityFramework.Factories
 {
