@@ -3,9 +3,9 @@ using Consul;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MottaDevelopments.ChatRoom.Api.Services;
+using MottaDevelopments.ChatRoom.Identity.Api.Services;
 
-namespace MottaDevelopments.ChatRoom.Api.Extensions
+namespace MottaDevelopments.ChatRoom.Identity.Api.Extensions
 {
     public static class ServiceConfigExtensions
     {

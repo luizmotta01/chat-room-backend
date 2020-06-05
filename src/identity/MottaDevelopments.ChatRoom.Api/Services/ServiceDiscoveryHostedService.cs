@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using Consul;
 using Microsoft.Extensions.Hosting;
-using MottaDevelopments.ChatRoom.Api.Extensions;
+using MottaDevelopments.ChatRoom.Identity.Api.Extensions;
 
-namespace MottaDevelopments.ChatRoom.Api.Services
+namespace MottaDevelopments.ChatRoom.Identity.Api.Services
 {
     public class ServiceDiscoveryHostedService : IHostedService
     {

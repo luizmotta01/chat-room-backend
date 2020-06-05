@@ -1,13 +1,11 @@
-using System.IdentityModel.Tokens.Jwt;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MottaDevelopments.ChatRoom.Api.Extensions;
+using MottaDevelopments.ChatRoom.Identity.Api.Extensions;
 
-namespace MottaDevelopments.ChatRoom.Api
+namespace MottaDevelopments.ChatRoom.Identity.Api
 {
     public class Startup
     {

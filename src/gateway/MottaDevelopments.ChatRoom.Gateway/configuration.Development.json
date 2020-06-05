@@ -3,7 +3,7 @@
     {
       "DownstreamPathTemplate": "/api/{controller}",
       "DownstreamScheme": "http",
-      "ServiceName": "mottadevelopments-chatroom-api",
+      "ServiceName": "mottadevelopments-chatroom-identity-api",
       "UpstreamPathTemplate": "/api/{controller}",
       "UpstreamHttpMethod": [ "Get", "Post" ]
     }

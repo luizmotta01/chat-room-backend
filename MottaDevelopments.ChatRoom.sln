@@ -48,7 +48,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MottaDevelopments.MicroServ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MottaDevelopments.ChatRoom.Identity.Application", "src\identity\MottaDevelopments.ChatRoom.Identity.Application\MottaDevelopments.ChatRoom.Identity.Application.csproj", "{1A3D9DD2-F944-4F18-8B02-ECE64B021601}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MottaDevelopments.ChatRoom.Api", "src\identity\MottaDevelopments.ChatRoom.Api\MottaDevelopments.ChatRoom.Api.csproj", "{6FE2AD4D-9330-4FB4-9CDE-E96C62D47104}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MottaDevelopments.ChatRoom.Identity.Api", "src\identity\MottaDevelopments.ChatRoom.Api\MottaDevelopments.ChatRoom.Identity.Api.csproj", "{6FE2AD4D-9330-4FB4-9CDE-E96C62D47104}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MottaDevelopments.ChatRoom.Gateway", "src\gateway\MottaDevelopments.ChatRoom.Gateway\MottaDevelopments.ChatRoom.Gateway.csproj", "{35BEDF19-F42B-44AC-BDAF-A15356E9F92A}"
 EndProject

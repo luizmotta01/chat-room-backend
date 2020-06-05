@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MottaDevelopments.ChatRoom.Api.Controllers.v1
+namespace MottaDevelopments.ChatRoom.Identity.Api.Controllers.v1
 {
     [Route("api/[controller]")]
     [ApiController]

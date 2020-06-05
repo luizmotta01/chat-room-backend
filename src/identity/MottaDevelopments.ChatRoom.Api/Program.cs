@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace MottaDevelopments.ChatRoom.Api
+namespace MottaDevelopments.ChatRoom.Identity.Api
 {
     public class Program
     {
