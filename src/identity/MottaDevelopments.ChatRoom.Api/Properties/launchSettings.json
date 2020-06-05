@@ -3,8 +3,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:59579",
-      "sslPort": 44383
+      "applicationUrl": "http://localhost:62309",
+      "sslPort": 44310
     }
   },
   "$schema": "http://json.schemastore.org/launchsettings.json",
@@ -12,13 +12,15 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
+      "launchUrl": "chatroomhub",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "MottaDevelopments.ChatRoom.Identity.Api": {
+    "MottaDevelopments.ChatRoom": {
       "commandName": "Project",
       "launchBrowser": true,
+      "launchUrl": "chatroomhub",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
@@ -27,7 +29,7 @@
     "Docker": {
       "commandName": "Docker",
       "launchBrowser": true,
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/chatroomhub",
       "publishAllPorts": true,
       "useSSL": true
     }

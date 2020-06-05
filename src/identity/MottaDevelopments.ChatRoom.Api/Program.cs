@@ -2,11 +2,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace MottaDevelopments.ChatRoom.Identity.Api
+namespace MottaDevelopments.ChatRoom.Api
 {
     public class Program
     {
-        public static async Task Main(string[] args) => await CreateHostBuilder(args).Build().RunAsync();
+        public static async Task Main(string[] args)
+        {
+            var host = CreateHostBuilder(args).Build();
+
+            await host.RunAsync();
+        }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)

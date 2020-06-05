@@ -1,4 +1,5 @@
 ﻿using Consul;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MottaDevelopments.MicroServices.Application.Services;
@@ -7,9 +8,9 @@ namespace MottaDevelopments.MicroServices.Application.Consul
 {
     public static class Extensions
     {
-        public static IServiceCollection AddConsulServices(this IServiceCollection serviceCollection)
+        public static IServiceCollection AddConsulServices(this IServiceCollection serviceCollection, IConfiguration configuration)
         {
-            var serviceDiscoveryConfiguration = ServiceDiscoveryConfigurationFactory.GetServiceConfig();
+            var serviceDiscoveryConfiguration = configuration.GetServiceConfig();
             
             var consulClient = CreateConsulClient(serviceDiscoveryConfiguration);
             

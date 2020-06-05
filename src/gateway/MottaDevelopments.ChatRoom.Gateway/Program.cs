@@ -1,7 +1,11 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace MottaDevelopments.ChatRoom.Gateway
 {
@@ -16,11 +20,19 @@ namespace MottaDevelopments.ChatRoom.Gateway
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureAppConfiguration((hostContext, config) => config.SetBasePath(hostContext.HostingEnvironment.ContentRootPath)
-                    .AddJsonFile("appsettings.json", true, true)
-                    .AddJsonFile($"appsettings.{hostContext.HostingEnvironment.EnvironmentName}.json", true, true)
-                    .AddJsonFile($"ocelot.{hostContext.HostingEnvironment.EnvironmentName}.json", true, true)
-                    .AddEnvironmentVariables())
-                .ConfigureWebHostDefaults(webBuilder => webBuilder.UseStartup<Startup>());
+                .ConfigureAppConfiguration((hostContext, config) =>
+                {
+                    config.SetBasePath(hostContext.HostingEnvironment.ContentRootPath)
+                        .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                        .AddJsonFile($"appsettings.{hostContext.HostingEnvironment.EnvironmentName}.json",
+                            optional: true, reloadOnChange: true)
+                        .AddJsonFile($"configuration.{hostContext.HostingEnvironment.EnvironmentName}.json",
+                            optional: true, reloadOnChange: true)
+                        .AddEnvironmentVariables();
+                })
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
     }
 }

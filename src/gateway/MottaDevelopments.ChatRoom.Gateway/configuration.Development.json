@@ -1,0 +1,18 @@
+﻿{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/{controller}",
+      "DownstreamScheme": "http",
+      "ServiceName": "mottadevelopments-chatroom-api",
+      "UpstreamPathTemplate": "/api/{controller}",
+      "UpstreamHttpMethod": [ "Get", "Post" ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "ServiceDiscoveryProvider": {
+      "Host": "consul",
+      "Port": 8500,
+      "Type": "Consul"
+    }
+  }
+}

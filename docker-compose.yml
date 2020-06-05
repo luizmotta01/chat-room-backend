@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+  mottadevelopments.chatroom.api:
+    container_name: mottadevelopments-chatroom-api
+    image: ${DOCKER_REGISTRY-}mottadevelopmentschatroomapi
+    build:
+      context: .
+      dockerfile: src/identity/MottaDevelopments.ChatRoom.Api/Dockerfile
+
+  mottadevelopments.chatroom.gateway:
+    container_name: mottadevelopments-chatroom-gateway
+    image: ${DOCKER_REGISTRY-}mottadevelopmentschatroomgateway
+    build:
+      context: .
+      dockerfile: src/gateway/MottaDevelopments.ChatRoom.Gateway/Dockerfile
+ 
+  consul:
+    image: consul:latest
+    command: consul agent -dev -log-level=warn -ui -client=0.0.0.0
+    hostname: consul
+    container_name: consul

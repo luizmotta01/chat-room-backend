@@ -7,10 +7,10 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["src/gateway/MottaDevelopments.ChatRoom.Gateway/MottaDevelopments.ChatRoom.Gateway.csproj", "src/gateway/MottaDevelopments.ChatRoom.Gateway/"]
-RUN dotnet restore "src/gateway/MottaDevelopments.ChatRoom.Gateway/MottaDevelopments.ChatRoom.Gateway.csproj"
+COPY ["src/MottaDevelopments.ChatRoom.Gateway/MottaDevelopments.ChatRoom.Gateway.csproj", "src/MottaDevelopments.ChatRoom.Gateway/"]
+RUN dotnet restore "src/MottaDevelopments.ChatRoom.Gateway/MottaDevelopments.ChatRoom.Gateway.csproj"
 COPY . .
-WORKDIR "/src/src/gateway/MottaDevelopments.ChatRoom.Gateway"
+WORKDIR "/src/src/MottaDevelopments.ChatRoom.Gateway"
 RUN dotnet build "MottaDevelopments.ChatRoom.Gateway.csproj" -c Release -o /app/build
 
 FROM build AS publish
