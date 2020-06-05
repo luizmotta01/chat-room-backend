@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MottaDevelopments.ChatRoom.Identity.Api.Extensions;
+using MottaDevelopments.ChatRoom.Identity.Application.Registrations;
 
 namespace MottaDevelopments.ChatRoom.Identity.Api
 {
@@ -33,7 +34,7 @@ namespace MottaDevelopments.ChatRoom.Identity.Api
                         .SetIsOriginAllowed((host) => true)
                         .AllowCredentials());
             });
-            
+
             //JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
             //var identityUrl = Configuration.GetValue<string>("IdentityUrl");

@@ -20,5 +20,9 @@
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.6.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MottaDevelopments.ChatRoom.Identity.Application\MottaDevelopments.ChatRoom.Identity.Application.csproj" />
+  </ItemGroup>
+
 
 </Project>
