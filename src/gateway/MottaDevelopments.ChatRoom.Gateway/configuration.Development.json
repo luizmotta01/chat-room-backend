@@ -1,9 +1,9 @@
 ﻿{
   "Routes": [
     {
-      "DownstreamPathTemplate": "/api/{controller}",
+      "DownstreamPathTemplate": "/api/v1/{controller}",
       "DownstreamScheme": "http",
-      "ServiceName": "mottadevelopments-chatroom-identity-api",
+      "ServiceName": "mottadevelopments-chatroom-identity",
       "UpstreamPathTemplate": "/api/{controller}",
       "UpstreamHttpMethod": [ "Get", "Post" ]
     }

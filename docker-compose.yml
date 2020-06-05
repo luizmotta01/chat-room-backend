@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   mottadevelopments.chatroom.identity.api:
-    container_name: mottadevelopments-chatroom-identity-api
+    container_name: mottadevelopments-chatroom-identity
     image: ${DOCKER_REGISTRY-}mottadevelopmentschatroomidentityapi
     build:
       context: .

@@ -1,4 +1,5 @@
-﻿using Consul;
+﻿using System;
+using Consul;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -28,5 +29,21 @@ namespace MottaDevelopments.MicroServices.Application.Consul
             {
                 config.Address = serviceConfig.ServiceDiscoveryAddress;
             });
+
+        
+        public static ServiceDiscoveryConfiguration GetServiceConfig(this IConfiguration configuration)
+        {
+            var serviceConfig = new ServiceDiscoveryConfiguration
+            {
+                ServiceDiscoveryAddress = configuration.GetValue<Uri>("ServiceConfig:serviceDiscoveryAddress"),
+                ServiceAddress = configuration.GetValue<Uri>("ServiceConfig:serviceAddress"),
+                ServiceName = configuration.GetValue<string>("ServiceConfig:serviceName"),
+                ServiceId = configuration.GetValue<string>("ServiceConfig:serviceId")
+            };
+
+            return serviceConfig;
+        }
     }
+
+
 }

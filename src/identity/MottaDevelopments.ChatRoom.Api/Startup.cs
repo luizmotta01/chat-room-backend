@@ -3,8 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MottaDevelopments.ChatRoom.Identity.Api.Extensions;
-using MottaDevelopments.ChatRoom.Identity.Application.Registrations;
+using MottaDevelopments.MicroServices.Application.Consul;
 
 namespace MottaDevelopments.ChatRoom.Identity.Api
 {
@@ -21,11 +20,8 @@ namespace MottaDevelopments.ChatRoom.Identity.Api
         public void ConfigureServices(IServiceCollection services)
         {
 
-            var serviceConfig = Configuration.GetServiceConfig();
-
-            services.RegisterConsulServices(serviceConfig);
-
-            services.AddCors(options =>
+            services.AddConsulServices(Configuration)
+                .AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
                     builder => builder
