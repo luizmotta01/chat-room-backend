@@ -35,9 +35,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.3 infrastructure", "2.3 i
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.4 domain", "2.4 domain", "{7295B05C-4DD6-451A-A396-32547189E532}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MottaDevelopments.ChatRoom.Identity.Domain", "src\identity\MottaDevelopments.ChatRoom.Identity.Domain\MottaDevelopments.ChatRoom.Identity.Domain.csproj", "{F8F7333C-69F7-4336-A98E-42A1050677A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MottaDevelopments.ChatRoom.Identity.Domain", "src\identity\MottaDevelopments.ChatRoom.Identity.Domain\MottaDevelopments.ChatRoom.Identity.Domain.csproj", "{F8F7333C-69F7-4336-A98E-42A1050677A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MottaDevelopments.ChatRoom.Identity.Infrastructure", "src\identity\MottaDevelopments.ChatRoom.Identity.Infrastructure\MottaDevelopments.ChatRoom.Identity.Infrastructure.csproj", "{1CDF8FB2-0F00-4F09-86F0-D1B841171491}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MottaDevelopments.ChatRoom.Identity.Infrastructure", "src\identity\MottaDevelopments.ChatRoom.Identity.Infrastructure\MottaDevelopments.ChatRoom.Identity.Infrastructure.csproj", "{1CDF8FB2-0F00-4F09-86F0-D1B841171491}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{70770571-419F-42F9-B95D-9D15BFF62595}"
 	ProjectSection(SolutionItems) = preProject
@@ -45,6 +45,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MottaDevelopments.MicroServices.Application", "src\common\MottaDevelopments.MicroServices.Application\MottaDevelopments.MicroServices.Application.csproj", "{E4F967F4-E83B-4F89-B603-370E95E2C772}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MottaDevelopments.ChatRoom.Identity.Application", "src\identity\MottaDevelopments.ChatRoom.Identity.Application\MottaDevelopments.ChatRoom.Identity.Application.csproj", "{1A3D9DD2-F944-4F18-8B02-ECE64B021601}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MottaDevelopments.ChatRoom.Identity.Api", "src\identity\MottaDevelopments.ChatRoom.Identity.Api\MottaDevelopments.ChatRoom.Identity.Api.csproj", "{6FD96328-2189-4268-A673-559791648A61}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -116,6 +122,42 @@ Global
 		{1CDF8FB2-0F00-4F09-86F0-D1B841171491}.Release|x64.Build.0 = Release|Any CPU
 		{1CDF8FB2-0F00-4F09-86F0-D1B841171491}.Release|x86.ActiveCfg = Release|Any CPU
 		{1CDF8FB2-0F00-4F09-86F0-D1B841171491}.Release|x86.Build.0 = Release|Any CPU
+		{E4F967F4-E83B-4F89-B603-370E95E2C772}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4F967F4-E83B-4F89-B603-370E95E2C772}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4F967F4-E83B-4F89-B603-370E95E2C772}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E4F967F4-E83B-4F89-B603-370E95E2C772}.Debug|x64.Build.0 = Debug|Any CPU
+		{E4F967F4-E83B-4F89-B603-370E95E2C772}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E4F967F4-E83B-4F89-B603-370E95E2C772}.Debug|x86.Build.0 = Debug|Any CPU
+		{E4F967F4-E83B-4F89-B603-370E95E2C772}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4F967F4-E83B-4F89-B603-370E95E2C772}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4F967F4-E83B-4F89-B603-370E95E2C772}.Release|x64.ActiveCfg = Release|Any CPU
+		{E4F967F4-E83B-4F89-B603-370E95E2C772}.Release|x64.Build.0 = Release|Any CPU
+		{E4F967F4-E83B-4F89-B603-370E95E2C772}.Release|x86.ActiveCfg = Release|Any CPU
+		{E4F967F4-E83B-4F89-B603-370E95E2C772}.Release|x86.Build.0 = Release|Any CPU
+		{1A3D9DD2-F944-4F18-8B02-ECE64B021601}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A3D9DD2-F944-4F18-8B02-ECE64B021601}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A3D9DD2-F944-4F18-8B02-ECE64B021601}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1A3D9DD2-F944-4F18-8B02-ECE64B021601}.Debug|x64.Build.0 = Debug|Any CPU
+		{1A3D9DD2-F944-4F18-8B02-ECE64B021601}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1A3D9DD2-F944-4F18-8B02-ECE64B021601}.Debug|x86.Build.0 = Debug|Any CPU
+		{1A3D9DD2-F944-4F18-8B02-ECE64B021601}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A3D9DD2-F944-4F18-8B02-ECE64B021601}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A3D9DD2-F944-4F18-8B02-ECE64B021601}.Release|x64.ActiveCfg = Release|Any CPU
+		{1A3D9DD2-F944-4F18-8B02-ECE64B021601}.Release|x64.Build.0 = Release|Any CPU
+		{1A3D9DD2-F944-4F18-8B02-ECE64B021601}.Release|x86.ActiveCfg = Release|Any CPU
+		{1A3D9DD2-F944-4F18-8B02-ECE64B021601}.Release|x86.Build.0 = Release|Any CPU
+		{6FD96328-2189-4268-A673-559791648A61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FD96328-2189-4268-A673-559791648A61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FD96328-2189-4268-A673-559791648A61}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6FD96328-2189-4268-A673-559791648A61}.Debug|x64.Build.0 = Debug|Any CPU
+		{6FD96328-2189-4268-A673-559791648A61}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6FD96328-2189-4268-A673-559791648A61}.Debug|x86.Build.0 = Debug|Any CPU
+		{6FD96328-2189-4268-A673-559791648A61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FD96328-2189-4268-A673-559791648A61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FD96328-2189-4268-A673-559791648A61}.Release|x64.ActiveCfg = Release|Any CPU
+		{6FD96328-2189-4268-A673-559791648A61}.Release|x64.Build.0 = Release|Any CPU
+		{6FD96328-2189-4268-A673-559791648A61}.Release|x86.ActiveCfg = Release|Any CPU
+		{6FD96328-2189-4268-A673-559791648A61}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -138,6 +180,9 @@ Global
 		{7295B05C-4DD6-451A-A396-32547189E532} = {D99698FE-94D4-4823-9213-990988247C1A}
 		{F8F7333C-69F7-4336-A98E-42A1050677A3} = {7295B05C-4DD6-451A-A396-32547189E532}
 		{1CDF8FB2-0F00-4F09-86F0-D1B841171491} = {400304FE-4A69-4739-956F-E4DA4591CAAE}
+		{E4F967F4-E83B-4F89-B603-370E95E2C772} = {F67C7585-ECC6-4FF2-9CE2-5E8512017BBD}
+		{1A3D9DD2-F944-4F18-8B02-ECE64B021601} = {4A8CC793-FF48-419A-96D7-9C5C5DD2362E}
+		{6FD96328-2189-4268-A673-559791648A61} = {62FFA4EB-101D-45EF-B123-7CBDE32646C0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {91012471-B936-40A8-8F49-C41826CF8879}

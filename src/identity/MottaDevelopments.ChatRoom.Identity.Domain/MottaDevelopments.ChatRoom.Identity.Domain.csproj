@@ -8,4 +8,8 @@
     <ProjectReference Include="..\..\common\MottaDevelopments.MicroServices.Domain\MottaDevelopments.MicroServices.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DomainEvents\" />
+  </ItemGroup>
+
 </Project>
