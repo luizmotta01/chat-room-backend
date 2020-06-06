@@ -33,6 +33,8 @@ namespace MottaDevelopments.MicroServices.Infrastructure.EntityFramework
                     });
             });
 
+            services.AddScoped<DbContextBase>(provider => provider.GetService<TDbContext>());
+
             return services;
         }
     }

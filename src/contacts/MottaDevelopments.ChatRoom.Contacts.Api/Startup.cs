@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -10,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using MottaDevelopments.MicroServices.Application.Consul;
 
 namespace MottaDevelopments.ChatRoom.Contacts.Api
@@ -36,6 +39,29 @@ namespace MottaDevelopments.ChatRoom.Contacts.Api
                             .AllowCredentials());
                 });
 
+            var secret = Environment.GetEnvironmentVariable("__JWT_SECRET__");
+
+            var key = Encoding.ASCII.GetBytes(secret);
+
+            services.AddAuthentication(scheme =>
+                {
+                    scheme.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    scheme.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                })
+                .AddJwtBearer(scheme =>
+                {
+                    scheme.RequireHttpsMetadata = false;
+                    scheme.SaveToken = true;
+                    scheme.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(key),
+                        ValidateIssuer = false,
+                        ValidateAudience = false,
+                        ClockSkew = TimeSpan.Zero
+                    };
+                });
+
             services.AddControllers();
         }
         
@@ -49,7 +75,9 @@ namespace MottaDevelopments.ChatRoom.Contacts.Api
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            
+            app.UseAuthentication();
+            
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints => endpoints.MapControllers());

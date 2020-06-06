@@ -15,7 +15,7 @@ namespace MottaDevelopments.ChatRoom.Identity.Infrastructure.EntityFramework.Con
             _mediator = mediator;
         }
 
-        public DbSet<LoginAccount> Accounts { get; set; }
+        public DbSet<Account> Accounts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

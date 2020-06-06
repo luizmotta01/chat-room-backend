@@ -4,9 +4,9 @@ using MottaDevelopments.ChatRoom.Identity.Domain.Entities;
 
 namespace MottaDevelopments.ChatRoom.Identity.Infrastructure.EntityFramework.Configurations
 {
-    public class LoginAccountEntityTypeConfiguration : IEntityTypeConfiguration<LoginAccount>
+    public class LoginAccountEntityTypeConfiguration : IEntityTypeConfiguration<Account>
     {
-        public void Configure(EntityTypeBuilder<LoginAccount> builder)
+        public void Configure(EntityTypeBuilder<Account> builder)
         {
             builder.Ignore(account => account.DomainEvents);
         }

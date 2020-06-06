@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using MediatR;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,22 +16,24 @@ namespace MottaDevelopments.ChatRoom.Identity.Api.Controllers.v1
     [Authorize]
     [Route("api/v1/[controller]")]
     [ApiController]
-    public class RegistrationController : IdentityController
+    public class AuthenticateController : IdentityController
     {
         private readonly IMediator _mediator;
 
-        public RegistrationController(IMediator mediator)
+        public AuthenticateController(IMediator mediator)
         {
             _mediator = mediator;
         }
 
         [AllowAnonymous]
         [HttpPost]
-        public async Task<IActionResult> Register([FromBody] RegistrationRequest request)
+        public async Task<IActionResult> Authenticate([FromBody] AuthenticationRequest request)
         {
-            var response = await _mediator.Send(new RegisterCommand(request, IpAddress()));
-            
-            return  Ok(response);
+            var response = await _mediator.Send(new AuthenticateCommand(request, IpAddress()));
+
+            return response.StatusCode == HttpStatusCode.Unauthorized
+                ? (IActionResult) Unauthorized(response.Messages)
+                : Ok(response.Payload);
         }
     }
 }

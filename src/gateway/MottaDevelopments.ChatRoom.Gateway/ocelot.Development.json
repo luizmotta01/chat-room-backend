@@ -8,10 +8,24 @@
       "UpstreamHttpMethod": [ "Get", "Post" ]
     },
     {
+      "DownstreamPathTemplate": "/api/v1/authenticate",
+      "DownstreamScheme": "http",
+      "ServiceName": "mottadevelopments-chatroom-identity",
+      "UpstreamPathTemplate": "/api/authenticate",
+      "UpstreamHttpMethod": [ "Get", "Post" ]
+    },
+    {
       "DownstreamPathTemplate": "/api/v1/contacts",
       "DownstreamScheme": "http",
       "ServiceName": "mottadevelopments-chatroom-contacts",
       "UpstreamPathTemplate": "/api/contacts",
+      "UpstreamHttpMethod": [ "Get", "Post" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/v1/contacts/{everything}",
+      "DownstreamScheme": "http",
+      "ServiceName": "mottadevelopments-chatroom-contacts",
+      "UpstreamPathTemplate": "/api/contacts/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post" ]
     }
   ],

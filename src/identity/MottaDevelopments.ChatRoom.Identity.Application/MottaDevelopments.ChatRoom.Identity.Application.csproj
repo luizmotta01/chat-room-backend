@@ -10,13 +10,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="CommandHandlers\" />
     <Folder Include="IntegrationEventHandlers\" />
-    <Folder Include="Models\" />
-    <Folder Include="Commands\" />
     <Folder Include="DomainEventHandlers\" />
     <Folder Include="IntegrationEvents\" />
-    <Folder Include="Profiles\" />
   </ItemGroup>
 
   <ItemGroup>

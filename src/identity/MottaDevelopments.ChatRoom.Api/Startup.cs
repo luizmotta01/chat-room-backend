@@ -1,4 +1,8 @@
+using System.IdentityModel.Tokens.Jwt;
+using System.Reflection;
 using Autofac;
+using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -12,6 +16,8 @@ namespace MottaDevelopments.ChatRoom.Identity.Api
 {
     public class Startup
     {
+        private const string ApplicationAssembly = "MottaDevelopments.ChatRoom.Identity.Application";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -34,24 +40,25 @@ namespace MottaDevelopments.ChatRoom.Identity.Api
                         .AllowCredentials());
             });
             
-            services.AddIdentityDbContext();
-            
-            //JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+            services.AddIdentityDbContext()
+                .AddAutoMapper(config => config.AllowNullCollections = true, Assembly.Load(ApplicationAssembly));
 
-            //var identityUrl = Configuration.GetValue<string>("IdentityUrl");
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
-            //services.AddAuthentication(options =>
-            //{
-            //    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-            //    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            var identityUrl = Configuration.GetValue<string>("IdentityUrl");
 
-            //}).AddJwtBearer(options =>
-            //{
-            //    options.Authority = identityUrl;
-            //    options.RequireHttpsMetadata = false;
-            //    options.Audience = "chat-room-api";
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 
-            //});
+            }).AddJwtBearer(options =>
+            {
+                options.Authority = identityUrl;
+                options.RequireHttpsMetadata = false;
+                options.Audience = "chat-room-api";
+
+            });
 
             services.AddControllers();
         }
@@ -68,6 +75,8 @@ namespace MottaDevelopments.ChatRoom.Identity.Api
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            
+            app.UseAuthentication();
             
             app.UseAuthorization();
 
