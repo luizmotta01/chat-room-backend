@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\common\MottaDevelopments.MicroServices.Application\MottaDevelopments.MicroServices.Application.csproj" />
+    <ProjectReference Include="..\MottaDevelopments.ChatRoom.Contacts.Infrastructure\MottaDevelopments.ChatRoom.Contacts.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

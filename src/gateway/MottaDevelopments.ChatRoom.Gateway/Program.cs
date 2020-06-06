@@ -19,16 +19,18 @@ namespace MottaDevelopments.ChatRoom.Gateway
                 .ConfigureAppConfiguration((hostContext, config) =>
                 {
                     config.SetBasePath(hostContext.HostingEnvironment.ContentRootPath)
-                        .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                        .AddJsonFile($"appsettings.{hostContext.HostingEnvironment.EnvironmentName}.json",
-                            optional: true, reloadOnChange: true)
-                        .AddJsonFile($"configuration.{hostContext.HostingEnvironment.EnvironmentName}.json",
-                            optional: true, reloadOnChange: true)
+                        .AddJsonFile(EnvironmentJsonFile(hostContext,"appsettings"), optional: true, reloadOnChange: true)
+                        .AddJsonFile(EnvironmentJsonFile(hostContext, "ocelot"), optional: true, reloadOnChange: true)
                         .AddEnvironmentVariables();
                 })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+
+        public static string EnvironmentJsonFile(HostBuilderContext context, string fileName) =>
+            string.IsNullOrEmpty(context.HostingEnvironment.EnvironmentName)
+                ? $"{fileName}.json"
+                : $"{fileName}.{context.HostingEnvironment.EnvironmentName}.json";
     }
 }

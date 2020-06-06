@@ -6,6 +6,13 @@
       "ServiceName": "mottadevelopments-chatroom-identity",
       "UpstreamPathTemplate": "/api/registration",
       "UpstreamHttpMethod": [ "Get", "Post" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/v1/contacts",
+      "DownstreamScheme": "http",
+      "ServiceName": "mottadevelopments-chatroom-contacts",
+      "UpstreamPathTemplate": "/api/contacts",
+      "UpstreamHttpMethod": [ "Get", "Post" ]
     }
   ],
   "GlobalConfiguration": {

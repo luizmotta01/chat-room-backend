@@ -10,6 +10,13 @@ services:
     depends_on:
       - sqlserver
 
+  mottadevelopments.chatroom.contacts.api:
+    container_name: mottadevelopments-chatroom-contacts
+    image: ${DOCKER_REGISTRY-}mottadevelopmentschatroomcontactsapi
+    build:
+      context: .
+      dockerfile: src/contacts/MottaDevelopments.ChatRoom.Contacts.Api/Dockerfile
+
   mottadevelopments.chatroom.gateway:
     container_name: mottadevelopments-chatroom-gateway
     image: ${DOCKER_REGISTRY-}mottadevelopmentschatroomgateway
@@ -26,3 +33,5 @@ services:
   sqlserver:
     container_name: sqlserver
     image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+
+

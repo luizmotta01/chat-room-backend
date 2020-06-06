@@ -60,11 +60,9 @@ namespace MottaDevelopments.ChatRoom.Identity.Api
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
+            if (env.IsDevelopment()) 
                 app.UseDeveloperExceptionPage();
-            }
-            
+
             app.UseCors("CorsPolicy");
             
             app.UseHttpsRedirection();

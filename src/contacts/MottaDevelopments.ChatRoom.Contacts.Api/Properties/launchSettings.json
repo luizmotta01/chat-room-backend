@@ -3,8 +3,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:62309",
-      "sslPort": 44310
+      "applicationUrl": "http://localhost:55542",
+      "sslPort": 44379
     }
   },
   "$schema": "http://json.schemastore.org/launchsettings.json",
@@ -12,15 +12,15 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "identity",
+      "launchUrl": "contacts",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "MottaDevelopments.ChatRoom": {
+    "MottaDevelopments.ChatRoom.Contacts.Api": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "identity",
+      "launchUrl": "contacts",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
@@ -29,7 +29,7 @@
     "Docker": {
       "commandName": "Docker",
       "launchBrowser": true,
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/identity",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/contacts",
       "publishAllPorts": true,
       "useSSL": true
     }
