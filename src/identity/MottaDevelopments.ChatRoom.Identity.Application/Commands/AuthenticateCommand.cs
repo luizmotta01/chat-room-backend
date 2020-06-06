@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Mvc;
 using MottaDevelopments.ChatRoom.Identity.Application.Commands.Base;
 using MottaDevelopments.ChatRoom.Identity.Application.Models;
 using MottaDevelopments.MicroServices.Application.Models;

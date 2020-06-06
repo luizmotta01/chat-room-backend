@@ -3,7 +3,6 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MottaDevelopments.ChatRoom.Identity.Infrastructure.EntityFramework.Context;
 
 namespace MottaDevelopments.ChatRoom.Identity.Infrastructure.Migrations

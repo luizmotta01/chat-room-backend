@@ -1,5 +1,4 @@
-﻿using System;
-using Autofac;
+﻿using Autofac;
 using MottaDevelopments.ChatRoom.Identity.Application.Services.Authentication;
 using MottaDevelopments.ChatRoom.Identity.Application.Services.Registration;
 using MottaDevelopments.ChatRoom.Identity.Domain.Entities;

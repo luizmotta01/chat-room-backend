@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using MottaDevelopments.MicroServices.Domain.Entities;
 
 namespace MottaDevelopments.ChatRoom.Identity.Domain.Entities
