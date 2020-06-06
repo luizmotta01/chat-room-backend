@@ -1,8 +1,6 @@
-using System.IdentityModel.Tokens.Jwt;
 using System.Reflection;
 using Autofac;
 using AutoMapper;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -11,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using MottaDevelopments.ChatRoom.Identity.Application.Autofac;
 using MottaDevelopments.ChatRoom.Identity.Application.Registrations;
 using MottaDevelopments.MicroServices.Application.Consul;
+using MottaDevelopments.MicroServices.Application.JwtBearer;
 
 namespace MottaDevelopments.ChatRoom.Identity.Api
 {
@@ -28,39 +27,20 @@ namespace MottaDevelopments.ChatRoom.Identity.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddConsulServices(Configuration)
                 .AddCors(options =>
-            {
-                options.AddPolicy("CorsPolicy",
-                    builder => builder
-                        .AllowAnyMethod()
-                        .AllowAnyHeader()
-                        .SetIsOriginAllowed((host) => true)
-                        .AllowCredentials());
-            });
-            
-            services.AddIdentityDbContext()
-                .AddAutoMapper(config => config.AllowNullCollections = true, Assembly.Load(ApplicationAssembly));
-
-            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
-
-            var identityUrl = Configuration.GetValue<string>("IdentityUrl");
-
-            services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-
-            }).AddJwtBearer(options =>
-            {
-                options.Authority = identityUrl;
-                options.RequireHttpsMetadata = false;
-                options.Audience = "chat-room-api";
-
-            });
-
-            services.AddControllers();
+                {
+                    options.AddPolicy("CorsPolicy",
+                        builder => builder
+                            .AllowAnyMethod()
+                            .AllowAnyHeader()
+                            .SetIsOriginAllowed((host) => true)
+                            .AllowCredentials());
+                })
+                .AddJwtBearerConfiguration()
+                .AddIdentityDbContext()
+                .AddAutoMapper(config => config.AllowNullCollections = true, Assembly.Load(ApplicationAssembly))
+                .AddControllers();
         }
 
         public void ConfigureContainer(ContainerBuilder container) => container.AddAutoFacModules();

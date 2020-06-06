@@ -1,13 +1,10 @@
-using System;
-using System.Text;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.IdentityModel.Tokens;
 using MottaDevelopments.MicroServices.Application.Consul;
+using MottaDevelopments.MicroServices.Application.JwtBearer;
 
 namespace MottaDevelopments.ChatRoom.Contacts.Api
 {
@@ -31,32 +28,9 @@ namespace MottaDevelopments.ChatRoom.Contacts.Api
                             .AllowAnyHeader()
                             .SetIsOriginAllowed((host) => true)
                             .AllowCredentials());
-                });
-
-            var secret = Environment.GetEnvironmentVariable("__JWT_SECRET__");
-
-            var key = Encoding.ASCII.GetBytes(secret);
-
-            services.AddAuthentication(scheme =>
-                {
-                    scheme.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                    scheme.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
                 })
-                .AddJwtBearer(scheme =>
-                {
-                    scheme.RequireHttpsMetadata = false;
-                    scheme.SaveToken = true;
-                    scheme.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(key),
-                        ValidateIssuer = false,
-                        ValidateAudience = false,
-                        ClockSkew = TimeSpan.Zero
-                    };
-                });
-
-            services.AddControllers();
+                .AddJwtBearerConfiguration()
+                .AddControllers();
         }
         
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
