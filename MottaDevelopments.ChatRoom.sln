@@ -15,11 +15,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. identity", "3. identity"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6. historic", "6. historic", "{6525DB69-1E2A-41F1-BD1F-C17AEDF48BF0}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.3 domain", "3.3 domain", "{5CFD138E-36BC-452D-A24F-9EFC93C73D4E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.4 domain", "3.4 domain", "{5CFD138E-36BC-452D-A24F-9EFC93C73D4E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.2 infrastructure", "3.2 infrastructure", "{D1803A17-7022-47B4-BB9C-B80934B5AEDF}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.3 infrastructure", "3.3 infrastructure", "{D1803A17-7022-47B4-BB9C-B80934B5AEDF}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.1 application", "3.1 application", "{F67C7585-ECC6-4FF2-9CE2-5E8512017BBD}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.2 application", "3.2 application", "{F67C7585-ECC6-4FF2-9CE2-5E8512017BBD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MottaDevelopments.MicroServices.Domain", "src\common\MottaDevelopments.MicroServices.Domain\MottaDevelopments.MicroServices.Domain.csproj", "{95AED7AC-8A96-492F-B5AB-DD5618B769DE}"
 EndProject
@@ -68,11 +68,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5. groups", "5. groups", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MottaDevelopments.ChatRoom.Contacts.Api", "src\contacts\MottaDevelopments.ChatRoom.Contacts.Api\MottaDevelopments.ChatRoom.Contacts.Api.csproj", "{4C336570-E2D2-47BE-96D1-0E0BE687211F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MottaDevelopments.ChatRoom.Contacts.Application", "src\contacts\MottaDevelopments.ChatRoom.Contacts.Application\MottaDevelopments.ChatRoom.Contacts.Application.csproj", "{22AC7FCF-417B-47FB-8845-72F692E3B7FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MottaDevelopments.ChatRoom.Contacts.Application", "src\contacts\MottaDevelopments.ChatRoom.Contacts.Application\MottaDevelopments.ChatRoom.Contacts.Application.csproj", "{22AC7FCF-417B-47FB-8845-72F692E3B7FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MottaDevelopments.ChatRoom.Contacts.Infrastructure", "src\contacts\MottaDevelopments.ChatRoom.Contacts.Infrastructure\MottaDevelopments.ChatRoom.Contacts.Infrastructure.csproj", "{344DC159-33C6-4A4E-88B3-8FFEC2268C0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MottaDevelopments.ChatRoom.Contacts.Infrastructure", "src\contacts\MottaDevelopments.ChatRoom.Contacts.Infrastructure\MottaDevelopments.ChatRoom.Contacts.Infrastructure.csproj", "{344DC159-33C6-4A4E-88B3-8FFEC2268C0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MottaDevelopments.ChatRoom.Contacts.Domain", "src\contacts\MottaDevelopments.ChatRoom.Contacts.Domain\MottaDevelopments.ChatRoom.Contacts.Domain.csproj", "{D7E8BB2C-1456-454A-B34C-E7C08AD6332F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MottaDevelopments.ChatRoom.Contacts.Domain", "src\contacts\MottaDevelopments.ChatRoom.Contacts.Domain\MottaDevelopments.ChatRoom.Contacts.Domain.csproj", "{D7E8BB2C-1456-454A-B34C-E7C08AD6332F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.1 eventbus", "3.1 eventbus", "{6F849D87-3882-4A9B-8CA9-43422299605A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MottaDevelopments.MicroServices.EventBus.Core", "src\common\MottaDevelopments.MicroServices.EventBus.Core\MottaDevelopments.MicroServices.EventBus.Core.csproj", "{F167B03F-81C5-4343-8E93-9AD26AB3CF14}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MottaDevelopments.MicroServices.EventBus.Extensions", "src\common\MottaDevelopments.MicroServices.EventBus.Extensions\MottaDevelopments.MicroServices.EventBus.Extensions.csproj", "{7D1F06ED-4B8C-47F2-B0DB-073E4BD665B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MottaDevelopments.MicroServices.EventBus", "src\common\MottaDevelopments.MicroServices.EventBus\MottaDevelopments.MicroServices.EventBus.csproj", "{D4F66BAB-5363-47DE-9711-297AAEE46DFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MottaDevelopments.MicroServices.EventBus.Infrastructure", "src\common\MottaDevelopments.MicroServices.EventBus.Infrastructure\MottaDevelopments.MicroServices.EventBus.Infrastructure.csproj", "{67609A41-D62D-4720-9943-AD8B725A1731}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -240,6 +250,54 @@ Global
 		{D7E8BB2C-1456-454A-B34C-E7C08AD6332F}.Release|x64.Build.0 = Release|Any CPU
 		{D7E8BB2C-1456-454A-B34C-E7C08AD6332F}.Release|x86.ActiveCfg = Release|Any CPU
 		{D7E8BB2C-1456-454A-B34C-E7C08AD6332F}.Release|x86.Build.0 = Release|Any CPU
+		{F167B03F-81C5-4343-8E93-9AD26AB3CF14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F167B03F-81C5-4343-8E93-9AD26AB3CF14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F167B03F-81C5-4343-8E93-9AD26AB3CF14}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F167B03F-81C5-4343-8E93-9AD26AB3CF14}.Debug|x64.Build.0 = Debug|Any CPU
+		{F167B03F-81C5-4343-8E93-9AD26AB3CF14}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F167B03F-81C5-4343-8E93-9AD26AB3CF14}.Debug|x86.Build.0 = Debug|Any CPU
+		{F167B03F-81C5-4343-8E93-9AD26AB3CF14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F167B03F-81C5-4343-8E93-9AD26AB3CF14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F167B03F-81C5-4343-8E93-9AD26AB3CF14}.Release|x64.ActiveCfg = Release|Any CPU
+		{F167B03F-81C5-4343-8E93-9AD26AB3CF14}.Release|x64.Build.0 = Release|Any CPU
+		{F167B03F-81C5-4343-8E93-9AD26AB3CF14}.Release|x86.ActiveCfg = Release|Any CPU
+		{F167B03F-81C5-4343-8E93-9AD26AB3CF14}.Release|x86.Build.0 = Release|Any CPU
+		{7D1F06ED-4B8C-47F2-B0DB-073E4BD665B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D1F06ED-4B8C-47F2-B0DB-073E4BD665B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D1F06ED-4B8C-47F2-B0DB-073E4BD665B7}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7D1F06ED-4B8C-47F2-B0DB-073E4BD665B7}.Debug|x64.Build.0 = Debug|Any CPU
+		{7D1F06ED-4B8C-47F2-B0DB-073E4BD665B7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7D1F06ED-4B8C-47F2-B0DB-073E4BD665B7}.Debug|x86.Build.0 = Debug|Any CPU
+		{7D1F06ED-4B8C-47F2-B0DB-073E4BD665B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D1F06ED-4B8C-47F2-B0DB-073E4BD665B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D1F06ED-4B8C-47F2-B0DB-073E4BD665B7}.Release|x64.ActiveCfg = Release|Any CPU
+		{7D1F06ED-4B8C-47F2-B0DB-073E4BD665B7}.Release|x64.Build.0 = Release|Any CPU
+		{7D1F06ED-4B8C-47F2-B0DB-073E4BD665B7}.Release|x86.ActiveCfg = Release|Any CPU
+		{7D1F06ED-4B8C-47F2-B0DB-073E4BD665B7}.Release|x86.Build.0 = Release|Any CPU
+		{D4F66BAB-5363-47DE-9711-297AAEE46DFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4F66BAB-5363-47DE-9711-297AAEE46DFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4F66BAB-5363-47DE-9711-297AAEE46DFF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D4F66BAB-5363-47DE-9711-297AAEE46DFF}.Debug|x64.Build.0 = Debug|Any CPU
+		{D4F66BAB-5363-47DE-9711-297AAEE46DFF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D4F66BAB-5363-47DE-9711-297AAEE46DFF}.Debug|x86.Build.0 = Debug|Any CPU
+		{D4F66BAB-5363-47DE-9711-297AAEE46DFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4F66BAB-5363-47DE-9711-297AAEE46DFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4F66BAB-5363-47DE-9711-297AAEE46DFF}.Release|x64.ActiveCfg = Release|Any CPU
+		{D4F66BAB-5363-47DE-9711-297AAEE46DFF}.Release|x64.Build.0 = Release|Any CPU
+		{D4F66BAB-5363-47DE-9711-297AAEE46DFF}.Release|x86.ActiveCfg = Release|Any CPU
+		{D4F66BAB-5363-47DE-9711-297AAEE46DFF}.Release|x86.Build.0 = Release|Any CPU
+		{67609A41-D62D-4720-9943-AD8B725A1731}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67609A41-D62D-4720-9943-AD8B725A1731}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67609A41-D62D-4720-9943-AD8B725A1731}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{67609A41-D62D-4720-9943-AD8B725A1731}.Debug|x64.Build.0 = Debug|Any CPU
+		{67609A41-D62D-4720-9943-AD8B725A1731}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{67609A41-D62D-4720-9943-AD8B725A1731}.Debug|x86.Build.0 = Debug|Any CPU
+		{67609A41-D62D-4720-9943-AD8B725A1731}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67609A41-D62D-4720-9943-AD8B725A1731}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67609A41-D62D-4720-9943-AD8B725A1731}.Release|x64.ActiveCfg = Release|Any CPU
+		{67609A41-D62D-4720-9943-AD8B725A1731}.Release|x64.Build.0 = Release|Any CPU
+		{67609A41-D62D-4720-9943-AD8B725A1731}.Release|x86.ActiveCfg = Release|Any CPU
+		{67609A41-D62D-4720-9943-AD8B725A1731}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -275,6 +333,11 @@ Global
 		{22AC7FCF-417B-47FB-8845-72F692E3B7FD} = {BA7DB596-DB15-46B7-8D14-4165DB91908A}
 		{344DC159-33C6-4A4E-88B3-8FFEC2268C0A} = {230057F0-017E-4F32-BDF7-5F172FB95B5F}
 		{D7E8BB2C-1456-454A-B34C-E7C08AD6332F} = {B4AE13E6-1E10-4AE7-9FA1-0C1188FFD13F}
+		{6F849D87-3882-4A9B-8CA9-43422299605A} = {4E40F723-76D9-4537-A3D0-ABA6FB556C22}
+		{F167B03F-81C5-4343-8E93-9AD26AB3CF14} = {6F849D87-3882-4A9B-8CA9-43422299605A}
+		{7D1F06ED-4B8C-47F2-B0DB-073E4BD665B7} = {6F849D87-3882-4A9B-8CA9-43422299605A}
+		{D4F66BAB-5363-47DE-9711-297AAEE46DFF} = {6F849D87-3882-4A9B-8CA9-43422299605A}
+		{67609A41-D62D-4720-9943-AD8B725A1731} = {6F849D87-3882-4A9B-8CA9-43422299605A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {91012471-B936-40A8-8F49-C41826CF8879}

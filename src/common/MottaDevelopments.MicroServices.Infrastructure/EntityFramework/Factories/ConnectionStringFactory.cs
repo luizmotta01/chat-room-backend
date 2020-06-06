@@ -9,7 +9,17 @@ namespace MottaDevelopments.MicroServices.Infrastructure.EntityFramework.Factori
 
         public static string GetConnectionStringFromEnvironmentVariables() => _defaultMask.ReplaceEnvironmentVariables(DatabaseEnvironmentVariables.GetDatabaseEnvironmentVariables());
 
-        private static string ReplaceEnvironmentVariables(this string connectionString, DatabaseEnvironmentVariables environmentVariables) => connectionString.Replace(DatabaseEnvironmentVariables.DbHostPlaceholder, environmentVariables.DbHost)
+        public static string GetIntegrationEventConnectionStringFromEnvironmentVariables() =>
+            _defaultMask.ReplaceIntegrationEventEnvironmentVariables(DatabaseEnvironmentVariables
+                .GetIntegrationEventsEnvironmentVariables());
+
+        private static string ReplaceEnvironmentVariables(this string connectionString, DatabaseEnvironmentVariables environmentVariables) => connectionString
+            .Replace(DatabaseEnvironmentVariables.DbHostPlaceholder, environmentVariables.DbHost)
+            .Replace(DatabaseEnvironmentVariables.DbNamePlaceholder, environmentVariables.DbName)
+            .Replace(DatabaseEnvironmentVariables.SaPasswordPlaceholder, environmentVariables.SaPassword);
+        
+        private static string ReplaceIntegrationEventEnvironmentVariables(this string connectionString, DatabaseEnvironmentVariables environmentVariables) => connectionString
+            .Replace(DatabaseEnvironmentVariables.DbHostPlaceholder, environmentVariables.DbHost)
             .Replace(DatabaseEnvironmentVariables.DbNamePlaceholder, environmentVariables.DbName)
             .Replace(DatabaseEnvironmentVariables.SaPasswordPlaceholder, environmentVariables.SaPassword);
     }

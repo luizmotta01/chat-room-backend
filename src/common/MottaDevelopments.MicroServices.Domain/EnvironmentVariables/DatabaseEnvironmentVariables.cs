@@ -7,7 +7,9 @@ namespace MottaDevelopments.MicroServices.Domain.EnvironmentVariables
         public static string DbHostPlaceholder = "__DB_HOST__";
         
         public static string DbNamePlaceholder = "__DB_NAME__";
-
+        
+        public static string IntegrationEventsDbNamePlaceholder = "__IE_DB_NAME__";
+        
         public static string SaPasswordPlaceholder = "__SA_PASSWORD__";
 
         public string DbHost { get; set; }
@@ -22,6 +24,16 @@ namespace MottaDevelopments.MicroServices.Domain.EnvironmentVariables
             {
                 DbHost = Environment.GetEnvironmentVariable(DbHostPlaceholder),
                 DbName = Environment.GetEnvironmentVariable(DbNamePlaceholder),
+                SaPassword = Environment.GetEnvironmentVariable(SaPasswordPlaceholder)
+            };
+        }
+
+        public static DatabaseEnvironmentVariables GetIntegrationEventsEnvironmentVariables()
+        {
+            return new DatabaseEnvironmentVariables
+            {
+                DbHost = Environment.GetEnvironmentVariable(DbHostPlaceholder),
+                DbName = Environment.GetEnvironmentVariable(IntegrationEventsDbNamePlaceholder),
                 SaPassword = Environment.GetEnvironmentVariable(SaPasswordPlaceholder)
             };
         }
