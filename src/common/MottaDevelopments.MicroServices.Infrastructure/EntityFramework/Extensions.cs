@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -32,8 +33,6 @@ namespace MottaDevelopments.MicroServices.Infrastructure.EntityFramework
                         sqlServerOptions.MigrationsHistoryTable(DbContextBase.MigrationTableName, schema);
                     });
             }, ServiceLifetime.Scoped);
-
-            services.AddScoped<DbContextBase>(provider => provider.GetService<TDbContext>());
 
             return services;
         }

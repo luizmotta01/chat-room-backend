@@ -13,16 +13,7 @@ namespace MottaDevelopments.ChatRoom.Identity.Application.Registrations
     {
         public static IServiceCollection AddIdentityDbContext(this IServiceCollection serviceCollection)
         {
-            serviceCollection.AddEntityFrameworkSqlServer().AddDbContext<IdentityDbContext>(options =>
-            {
-                options.UseSqlServer(ConnectionStringFactory.GetConnectionStringFromEnvironmentVariables(),
-                    sqlServerOptions =>
-                    {
-                        sqlServerOptions.EnableRetryOnFailure(10, TimeSpan.FromSeconds(30), null);
-
-                        sqlServerOptions.MigrationsHistoryTable(DbContextBase.MigrationTableName, nameof(Identity));
-                    });
-            }, ServiceLifetime.Scoped);
+            serviceCollection.AddDbContext<IdentityDbContext>(nameof(Identity));
 
             serviceCollection.AddScoped<DbContextBase>(provider => provider.GetService<IdentityDbContext>());
 
@@ -31,13 +22,7 @@ namespace MottaDevelopments.ChatRoom.Identity.Application.Registrations
 
         public static async Task<IServiceProvider> MigrateDbContext(this IServiceProvider serviceProvider)
         {
-            using var scope = serviceProvider.GetService<IServiceScopeFactory>().CreateScope();
-
-            var context = scope.ServiceProvider.GetRequiredService<IdentityDbContext>();
-
-            await context.Database.MigrateAsync();
-
-            return serviceProvider;
+            return await serviceProvider.MigrateDbContext<IdentityDbContext>();
         }
     }
 }

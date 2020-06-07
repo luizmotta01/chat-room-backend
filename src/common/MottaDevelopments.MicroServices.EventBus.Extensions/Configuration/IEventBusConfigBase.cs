@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace MottaDevelopments.MicroServices.EventBus.Extensions.Configuration
 {
-     interface IEventBusConfigBase
+     public interface IEventBusConfigBase
     {
          string User { get; }
 
