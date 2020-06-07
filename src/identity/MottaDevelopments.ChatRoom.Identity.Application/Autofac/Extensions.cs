@@ -1,6 +1,6 @@
 ﻿using Autofac;
 using MottaDevelopments.ChatRoom.Identity.Application.Autofac.Modules;
-using MottaDevelopments.MicroServices.Application.AutofacModules;
+using MottaDevelopments.MicroServices.Application.Autofac.Modules;
 
 namespace MottaDevelopments.ChatRoom.Identity.Application.Autofac
 {

@@ -15,11 +15,11 @@ namespace MottaDevelopments.MicroServices.EventBus.Infrastructure.Utilities
 
         public async Task ExecuteAsync(Func<Task> function)
         {
-            var strategy = _context.DatabaseFacade.CreateExecutionStrategy();
+            var strategy = _context.Database.CreateExecutionStrategy();
 
             await strategy.ExecuteAsync(async () =>
             {
-                await using var transaction = _context.DatabaseFacade.BeginTransaction();
+                await using var transaction = _context.Database.BeginTransaction();
 
                 await function();
 

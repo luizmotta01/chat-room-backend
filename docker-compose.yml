@@ -9,6 +9,7 @@ services:
       dockerfile: src/identity/MottaDevelopments.ChatRoom.Api/Dockerfile
     depends_on:
       - sqlserver
+      - rabbitmq
 
   mottadevelopments.chatroom.contacts.api:
     container_name: mottadevelopments-chatroom-contacts
@@ -16,6 +17,9 @@ services:
     build:
       context: .
       dockerfile: src/contacts/MottaDevelopments.ChatRoom.Contacts.Api/Dockerfile
+    depends_on:
+      - sqlserver
+      - rabbitmq
 
   mottadevelopments.chatroom.gateway:
     container_name: mottadevelopments-chatroom-gateway
@@ -34,4 +38,6 @@ services:
     container_name: sqlserver
     image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
 
-
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3-management

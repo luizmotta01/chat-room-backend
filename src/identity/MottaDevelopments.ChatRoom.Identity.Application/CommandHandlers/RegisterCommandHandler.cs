@@ -5,6 +5,7 @@ using MottaDevelopments.ChatRoom.Identity.Application.Commands;
 using MottaDevelopments.ChatRoom.Identity.Application.Models;
 using MottaDevelopments.ChatRoom.Identity.Application.Services.Registration;
 using MottaDevelopments.MicroServices.Application.Models;
+using MottaDevelopments.MicroServices.Application.Services;
 
 namespace MottaDevelopments.ChatRoom.Identity.Application.CommandHandlers
 {

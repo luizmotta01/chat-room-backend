@@ -7,10 +7,12 @@ namespace MottaDevelopments.ChatRoom.Identity.Infrastructure.EntityFramework.Con
 {
     public class IdentityDbContextDesignTimeFactory : IDesignTimeDbContextFactory<IdentityDbContext>
     {
-        public IdentityDbContext CreateDbContext(string[] args) =>
-            new IdentityDbContext(new DbContextOptionsBuilder<IdentityDbContext>()
+        public IdentityDbContext CreateDbContext(string[] args)
+        {
+            return new IdentityDbContext(new DbContextOptionsBuilder<IdentityDbContext>()
                     .UseSqlServer(ConnectionStringFactory.GetConnectionStringFromEnvironmentVariables())
                     .Options
                 , new FakeMediator());
+        }
     }
 }

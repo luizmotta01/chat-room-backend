@@ -5,8 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="MassTransit" Version="6.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\common\MottaDevelopments.MicroServices.Application\MottaDevelopments.MicroServices.Application.csproj" />
     <ProjectReference Include="..\MottaDevelopments.ChatRoom.Contacts.Infrastructure\MottaDevelopments.ChatRoom.Contacts.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Autofac\Modules\" />
   </ItemGroup>
 
 </Project>

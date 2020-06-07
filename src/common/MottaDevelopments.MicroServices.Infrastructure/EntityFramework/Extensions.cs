@@ -9,7 +9,7 @@ namespace MottaDevelopments.MicroServices.Infrastructure.EntityFramework
 {
     public static class Extensions
     {
-        public static async Task<IServiceProvider> MigrateDbContext<TDbContext>(this IServiceProvider serviceProvider) where TDbContext : DbContextBase
+        public static async Task<IServiceProvider> MigrateDbContext<TDbContext>(this IServiceProvider serviceProvider) where TDbContext : DbContext
         {
             using var scope = serviceProvider.GetService<IServiceScopeFactory>().CreateScope();
 
@@ -31,7 +31,7 @@ namespace MottaDevelopments.MicroServices.Infrastructure.EntityFramework
 
                         sqlServerOptions.MigrationsHistoryTable(DbContextBase.MigrationTableName, schema);
                     });
-            });
+            }, ServiceLifetime.Scoped);
 
             services.AddScoped<DbContextBase>(provider => provider.GetService<TDbContext>());
 

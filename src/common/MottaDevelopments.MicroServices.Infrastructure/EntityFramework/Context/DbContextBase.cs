@@ -49,11 +49,10 @@ namespace MottaDevelopments.MicroServices.Infrastructure.EntityFramework.Context
         {
             if (_currentTransaction != null) return null;
 
-            _currentTransaction = await DatabaseFacade.BeginTransactionAsync(IsolationLevel.ReadCommitted);
+            _currentTransaction = await Database.BeginTransactionAsync(IsolationLevel.ReadCommitted);
 
             return _currentTransaction;
         }
-
         public async Task CommitTransactionAsync(IDbContextTransaction transaction)
         {
             if(transaction is null) throw new ArgumentNullException(nameof(transaction));

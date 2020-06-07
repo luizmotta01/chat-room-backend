@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MottaDevelopments.MicroServices.Application.Services;
 using MottaDevelopments.MicroServices.EventBus.Infrastructure.Context;
 using MottaDevelopments.MicroServices.EventBus.Infrastructure.Services;
+using MottaDevelopments.MicroServices.Infrastructure.EntityFramework.Context;
 using MottaDevelopments.MicroServices.Infrastructure.EntityFramework.Factories;
 
 namespace MottaDevelopments.MicroServices.EventBus.Infrastructure.Utilities
@@ -26,15 +26,16 @@ namespace MottaDevelopments.MicroServices.EventBus.Infrastructure.Utilities
             services.AddEntityFrameworkSqlServer()
                 .AddDbContext<IntegrationEventDbContext>(options =>
                 {
-                    options.UseSqlServer(
-                        ConnectionStringFactory.GetIntegrationEventConnectionStringFromEnvironmentVariables(),
+                    var con = ConnectionStringFactory.GetIntegrationEventConnectionStringFromEnvironmentVariables();
+                    options.UseSqlServer(con
+                        ,
                         sqlOptions =>
                         {
                             sqlOptions.MigrationsAssembly(AssemblyName);
 
                             sqlOptions.EnableRetryOnFailure(10, TimeSpan.FromSeconds(30), null);
                         });
-                });
+                }, ServiceLifetime.Scoped);
 
             return services;
         }

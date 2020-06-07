@@ -29,14 +29,28 @@ namespace MottaDevelopments.MicroServices.EventBus.Infrastructure.Services
                 .ToList();
         }
 
-        public async Task<IEnumerable<IntegrationEventEntity>> RetrievePendingEventsToPublishAsync(Guid transactionId) =>
-            await _context.IntegrationEvents.Where(@event =>
-                    @event.TransactionId == transactionId.ToString() &&
-                    @event.State == IntegrationEventState.NotPublished)
-                .OrderBy(@event => @event.CreatedAt)
-                .Select(@event =>
-                    @event.DeserializeJsonContent(_eventTypes.Find(type => type.Name == @event.EventTypeShortName)))
-                .ToListAsync();
+        public async Task<IEnumerable<IntegrationEventEntity>> RetrievePendingEventsToPublishAsync(Guid transactionId)
+        {
+            try
+            {
+                var events = await _context.IntegrationEvents.Where(@event =>
+                        @event.TransactionId == transactionId.ToString() &&
+                        @event.State == IntegrationEventState.NotPublished).ToListAsync();
+                    
+                var ordered = events.OrderBy(@event => @event.CreatedAt);
+
+
+                var deserialized = ordered.Select(@event =>
+                    @event.DeserializeJsonContent(_eventTypes.Find(type => type.Name == @event.EventTypeShortName)));
+
+                return deserialized;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
 
         public Task SaveEventAsync(IntegrationEvent @event, Guid transactionId)
         {

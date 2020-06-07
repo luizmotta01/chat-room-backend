@@ -9,11 +9,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.8" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.3" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\common\MottaDevelopments.MicroServices.EventBus.Extensions\MottaDevelopments.MicroServices.EventBus.Extensions.csproj" />
+    <ProjectReference Include="..\..\common\MottaDevelopments.MicroServices.EventBus.Infrastructure\MottaDevelopments.MicroServices.EventBus.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\common\MottaDevelopments.MicroServices.EventBus\MottaDevelopments.MicroServices.EventBus.csproj" />
     <ProjectReference Include="..\MottaDevelopments.ChatRoom.Contacts.Application\MottaDevelopments.ChatRoom.Contacts.Application.csproj" />
   </ItemGroup>
 

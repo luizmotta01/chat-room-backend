@@ -20,6 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\common\MottaDevelopments.MicroServices.EventBus.Extensions\MottaDevelopments.MicroServices.EventBus.Extensions.csproj" />
+    <ProjectReference Include="..\..\common\MottaDevelopments.MicroServices.EventBus.Infrastructure\MottaDevelopments.MicroServices.EventBus.Infrastructure.csproj" />
     <ProjectReference Include="..\MottaDevelopments.ChatRoom.Identity.Application\MottaDevelopments.ChatRoom.Identity.Application.csproj" />
   </ItemGroup>
 

@@ -1,15 +1,26 @@
+using System;
+using System.Reflection;
+using Autofac;
+using AutoMapper;
+using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MottaDevelopments.ChatRoom.Contacts.Application.Autofac;
 using MottaDevelopments.MicroServices.Application.Consul;
 using MottaDevelopments.MicroServices.Application.JwtBearer;
+using MottaDevelopments.MicroServices.EventBus.Extensions.Configuration;
+using MottaDevelopments.MicroServices.EventBus.Extensions.Registrations;
+using MottaDevelopments.MicroServices.EventBus.Infrastructure.Utilities;
 
 namespace MottaDevelopments.ChatRoom.Contacts.Api
 {
     public class Startup
     {
+        private const string ApplicationAssembly = "MottaDevelopments.ChatRoom.Contacts.Application";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -29,10 +40,31 @@ namespace MottaDevelopments.ChatRoom.Contacts.Api
                             .SetIsOriginAllowed((host) => true)
                             .AllowCredentials());
                 })
+                .AddIntegrationEventDbContext()
+                .AddCommonEventBusServices(ApplicationAssembly)
+                .AddIntegrationEvents()
+                .AddAutoMapper(config => config.AllowNullCollections = true, Assembly.Load(ApplicationAssembly))
                 .AddJwtBearerConfiguration()
                 .AddControllers();
         }
-        
+
+        public void ConfigureContainer(ContainerBuilder container)
+        {
+            container.AddAutoFacModules();
+
+            container.AddMassTransitModule(GetEventBusConfig());
+        }
+
+        private EventBusConfig GetEventBusConfig()
+        {
+            return new EventBusConfig(
+                Environment.GetEnvironmentVariable("__EVENT_BUS_HOST__"),
+                "/",
+                Environment.GetEnvironmentVariable("__EVENT_BUS_USER__"),
+                Environment.GetEnvironmentVariable("__EVENT_BUS_PASSWORD__"),
+                Assembly.Load(ApplicationAssembly));
+        }
+
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -49,6 +81,10 @@ namespace MottaDevelopments.ChatRoom.Contacts.Api
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints => endpoints.MapControllers());
+
+            var eventBus = app.ApplicationServices.GetRequiredService<IBusControl>();
+
+            eventBus.Start();
         }
     }
 }

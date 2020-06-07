@@ -6,6 +6,7 @@ using MottaDevelopments.ChatRoom.Identity.Application.Registrations;
 using MottaDevelopments.MicroServices.Application.Factories;
 using MottaDevelopments.MicroServices.Application.Logging;
 using MottaDevelopments.MicroServices.Application.Polly;
+using MottaDevelopments.MicroServices.EventBus.Infrastructure.Utilities;
 using Serilog;
 
 
@@ -23,7 +24,12 @@ namespace MottaDevelopments.ChatRoom.Identity.Api
 
             var policy = Policies.GetAsyncRetryPolicy(Log.Logger);
 
-            await policy.ExecuteAsync(async () => { await host.Services.MigrateDbContext(); });
+            await policy.ExecuteAsync(async () =>
+            {
+                await host.Services.MigrateDbContext();
+                
+                await host.Services.MigrateIntegrationEventDbContext();
+            });
             
             await host.RunAsync();
         }

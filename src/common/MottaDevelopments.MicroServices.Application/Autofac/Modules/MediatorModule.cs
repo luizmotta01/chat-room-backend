@@ -2,9 +2,10 @@
 using System.Reflection;
 using Autofac;
 using MediatR;
+using MottaDevelopments.MicroServices.Application.Behaviors;
 using Module = Autofac.Module;
 
-namespace MottaDevelopments.MicroServices.Application.AutofacModules
+namespace MottaDevelopments.MicroServices.Application.Autofac.Modules
 {
     public class MediatorModule : Module
     {
@@ -27,6 +28,8 @@ namespace MottaDevelopments.MicroServices.Application.AutofacModules
                 
                 return type => component.TryResolve(type, out var obj) ? obj : null;
             });
+
+            builder.RegisterGeneric(typeof(TransactionBehaviour<,>)).As(typeof(IPipelineBehavior<,>));
         }
 
         private static void LoadModules(ContainerBuilder builder, Assembly assembly)
