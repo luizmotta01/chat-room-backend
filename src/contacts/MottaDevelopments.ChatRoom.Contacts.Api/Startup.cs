@@ -12,6 +12,7 @@ using MottaDevelopments.ChatRoom.Contacts.Application.Autofac;
 using MottaDevelopments.MicroServices.Application.Consul;
 using MottaDevelopments.MicroServices.Application.JwtBearer;
 using MottaDevelopments.MicroServices.EventBus.Extensions.Configuration;
+using MottaDevelopments.MicroServices.EventBus.Extensions.RabbitMq;
 using MottaDevelopments.MicroServices.EventBus.Extensions.Registrations;
 using MottaDevelopments.MicroServices.EventBus.Infrastructure.Utilities;
 
