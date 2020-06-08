@@ -1,6 +1,8 @@
 ﻿using System.Threading.Tasks;
 using AutoMapper;
+using MediatR;
 using MottaDevelopments.ChatRoom.Identity.Application.Models;
+using MottaDevelopments.ChatRoom.Identity.Domain.DomainEvents;
 using MottaDevelopments.ChatRoom.Identity.Domain.Entities;
 using MottaDevelopments.Events;
 using MottaDevelopments.MicroServices.Application.Services;
@@ -11,14 +13,14 @@ namespace MottaDevelopments.ChatRoom.Identity.Application.Services.Registration
     public class RegistrationService : IRegistrationService
     {
         private readonly IRepository<Account> _repository;
-        private readonly IIntegrationEventService _integrationEventService;
         private readonly IMapper _mapper;
+        private readonly IMediator _mediator;
 
-        public RegistrationService(IRepository<Account> repository, IMapper mapper, IIntegrationEventService integrationEventService)
+        public RegistrationService(IRepository<Account> repository, IMapper mapper, IMediator mediator)
         {
             _repository = repository;
             _mapper = mapper;
-            _integrationEventService = integrationEventService;
+            _mediator = mediator;
         }
 
         public async Task<bool> Register(RegistrationRequest request)
@@ -30,8 +32,7 @@ namespace MottaDevelopments.ChatRoom.Identity.Application.Services.Registration
             var saved =  await _repository.UnitOfWork.SaveEntitiesAsync();
 
             if (saved)
-                await _integrationEventService.AddAndSaveIntegrationEventAsync(new NewAccountRegistered()
-                    {AccountId = entity.Id, Username = entity.Username});
+                await _mediator.Send(new NewAccountRegistered(entity))
 
             return saved;
         }

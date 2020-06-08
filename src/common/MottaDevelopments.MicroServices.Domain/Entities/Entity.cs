@@ -4,7 +4,7 @@ using MediatR;
 
 namespace MottaDevelopments.MicroServices.Domain.Entities
 {
-    public class Entity : IEntity
+    public abstract class Entity : IEntity
     {
         private readonly List<INotification> _domainEvents = new List<INotification>();
 

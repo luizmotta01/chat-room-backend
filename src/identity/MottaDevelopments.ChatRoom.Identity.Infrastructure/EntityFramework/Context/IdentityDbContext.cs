@@ -8,11 +8,8 @@ namespace MottaDevelopments.ChatRoom.Identity.Infrastructure.EntityFramework.Con
 {
     public class IdentityDbContext : DbContextBase
     {
-        private readonly IMediator _mediator;
-
         public IdentityDbContext(DbContextOptions<IdentityDbContext> options, IMediator mediator) : base(options, mediator)
         {
-            _mediator = mediator;
         }
 
         public DbSet<Account> Accounts { get; set; }
