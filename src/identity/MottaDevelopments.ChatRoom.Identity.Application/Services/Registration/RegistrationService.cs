@@ -14,26 +14,23 @@ namespace MottaDevelopments.ChatRoom.Identity.Application.Services.Registration
     {
         private readonly IRepository<Account> _repository;
         private readonly IMapper _mapper;
-        private readonly IMediator _mediator;
-
-        public RegistrationService(IRepository<Account> repository, IMapper mapper, IMediator mediator)
+        
+        public RegistrationService(IRepository<Account> repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
-            _mediator = mediator;
         }
 
         public async Task<bool> Register(RegistrationRequest request)
         {
             var account = _mapper.Map<Account>(request);
 
+            account.AddDomainEvent(new NewAccountRegistered(account));
+            
             var entity = _repository.Add(account);
-
+            
             var saved =  await _repository.UnitOfWork.SaveEntitiesAsync();
-
-            if (saved)
-                await _mediator.Send(new NewAccountRegistered(entity))
-
+            
             return saved;
         }
     }

@@ -21,16 +21,28 @@ namespace MottaDevelopments.ChatRoom.Gateway
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .SetIsOriginAllowed((host) => true)
+                        .AllowCredentials());
+            });
+
             services.AddOcelot(Configuration)
                 .AddConsul();
+
+            
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
+            if (env.IsDevelopment()) 
                 app.UseDeveloperExceptionPage();
-            }
+
+            app.UseCors("CorsPolicy");
 
             app.UseHttpsRedirection();
 

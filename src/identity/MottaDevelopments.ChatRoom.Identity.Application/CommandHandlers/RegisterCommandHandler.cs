@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Net;
+using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using MottaDevelopments.ChatRoom.Identity.Application.Commands;
@@ -22,7 +23,12 @@ namespace MottaDevelopments.ChatRoom.Identity.Application.CommandHandlers
         {
             var response = await _registrationService.Register(request.Payload);
 
-            return new Response<RegistrationResponse>(new RegistrationResponse(response));
+            return new Response<RegistrationResponse>(new RegistrationResponse(response))
+            {
+                StatusCode = response
+                    ? HttpStatusCode.Created
+                    : HttpStatusCode.BadRequest,
+            };
         }
     }
 }
