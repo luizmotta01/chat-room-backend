@@ -2,16 +2,7 @@
 {
     public class RegistrationResponse
     {
-        public bool Registered { get; private set; }
+        public string Username { get; set; }
 
-
-        public RegistrationResponse()
-        {
-            
-        }
-        public RegistrationResponse(bool registered)
-        {
-            Registered = registered;
-        }
     }
 }

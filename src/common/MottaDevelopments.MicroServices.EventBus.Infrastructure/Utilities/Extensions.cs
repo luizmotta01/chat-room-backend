@@ -6,7 +6,7 @@ using MottaDevelopments.MicroServices.Application.Services;
 using MottaDevelopments.MicroServices.EventBus.Infrastructure.Context;
 using MottaDevelopments.MicroServices.EventBus.Infrastructure.Services;
 using MottaDevelopments.MicroServices.Infrastructure.EntityFramework.Context;
-using MottaDevelopments.MicroServices.Infrastructure.EntityFramework.Factories;
+using MottaDevelopments.MicroServices.Infrastructure.Factories;
 
 namespace MottaDevelopments.MicroServices.EventBus.Infrastructure.Utilities
 {

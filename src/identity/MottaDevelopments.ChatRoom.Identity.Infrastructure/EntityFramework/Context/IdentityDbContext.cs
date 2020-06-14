@@ -18,7 +18,7 @@ namespace MottaDevelopments.ChatRoom.Identity.Infrastructure.EntityFramework.Con
         {
             modelBuilder.HasDefaultSchema(nameof(Identity));
 
-            modelBuilder.ApplyConfiguration(new LoginAccountEntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new AccountEntityTypeConfiguration());
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
@@ -6,7 +7,6 @@ using MottaDevelopments.ChatRoom.Identity.Application.Commands;
 using MottaDevelopments.ChatRoom.Identity.Application.Models;
 using MottaDevelopments.ChatRoom.Identity.Application.Services.Registration;
 using MottaDevelopments.MicroServices.Application.Models;
-using MottaDevelopments.MicroServices.Application.Services;
 
 namespace MottaDevelopments.ChatRoom.Identity.Application.CommandHandlers
 {
@@ -21,14 +21,17 @@ namespace MottaDevelopments.ChatRoom.Identity.Application.CommandHandlers
 
         public async Task<Response<RegistrationResponse>> Handle(RegisterCommand request, CancellationToken cancellationToken)
         {
-            var response = await _registrationService.Register(request.Payload);
-
-            return new Response<RegistrationResponse>(new RegistrationResponse(response))
+            try
             {
-                StatusCode = response
-                    ? HttpStatusCode.Created
-                    : HttpStatusCode.BadRequest,
-            };
+                var response = await _registrationService.Register(request.Payload);
+
+                return response;
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                throw;
+            }
         }
     }
 }

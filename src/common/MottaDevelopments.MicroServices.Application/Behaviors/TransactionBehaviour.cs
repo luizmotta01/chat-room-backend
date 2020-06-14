@@ -39,15 +39,13 @@ namespace MottaDevelopments.MicroServices.Application.Behaviors
 
                 await strategy.ExecuteAsync(async () =>
                 {
-                    Guid transactionId;
-
                     await using var transaction = await _context.BeginTransactionAsync();
 
                     response = await next();
 
                     await _context.CommitTransactionAsync(transaction);
 
-                    transactionId = transaction.TransactionId;
+                    var transactionId = transaction.TransactionId;
 
                     await _integrationEventService.PublishEventsAsync(transactionId);
                 });

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
+using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using MottaDevelopments.ChatRoom.Identity.Application.Models;
 using MottaDevelopments.ChatRoom.Identity.Application.Services.Tokens;
 using MottaDevelopments.ChatRoom.Identity.Domain.Entities;
@@ -11,20 +13,28 @@ namespace MottaDevelopments.ChatRoom.Identity.Application.Services.Authenticatio
     {
 
         private readonly IRepository<Account> _repository;
-
-        public AuthenticationService(IRepository<Account> repository)
+        private readonly IMapper _mapper;
+        //private readonly IPasswordHasher _hasher;
+        private readonly IPasswordHasher<Account> _hasher;
+        
+        public AuthenticationService(IRepository<Account> repository, IMapper mapper, IPasswordHasher<Account> hasher)
         {
             _repository = repository;
+            _mapper = mapper;
+            _hasher = hasher;
         }
 
         public async Task<AuthenticationResponse> Authenticate(AuthenticationRequest request, string ipAddress)
         {
             var account = await _repository.FindEntityAsync(acc =>
-                (acc.Username == request.Username || acc.Email == request.Email) && acc.Password == request.Password);
-
-            if (account == null)
+                (acc.Username == request.Username || acc.Email == request.Email));
+            
+            if (account == null)    
                 return null;
 
+            if (_hasher.VerifyHashedPassword(account, account.Password, request.Password) == PasswordVerificationResult.Failed) 
+                return null;
+            
             var jwtToken =
                 JwtTokenGenerator.GenerateJwtToken(account, Environment.GetEnvironmentVariable("__JWT_SECRET__"));
 

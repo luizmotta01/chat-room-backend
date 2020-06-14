@@ -15,6 +15,11 @@ namespace MottaDevelopments.MicroServices.Application.Models
         {
             Payload = payload;
         }
+
+        public Response()
+        {
+            
+        }
         
     }
 }

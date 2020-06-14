@@ -9,6 +9,8 @@ namespace MottaDevelopments.ChatRoom.Identity.Application.Profiles
         public IdentityProfile()
         {
             CreateMap<RegistrationRequest, Account>().ReverseMap();
+
+            CreateMap<AuthenticationRequest, Account>().ReverseMap();
         }
     }
 }

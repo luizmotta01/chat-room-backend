@@ -1,6 +1,6 @@
 ﻿using MottaDevelopments.MicroServices.Domain.EnvironmentVariables;
 
-namespace MottaDevelopments.MicroServices.Infrastructure.EntityFramework.Factories
+namespace MottaDevelopments.MicroServices.Infrastructure.Factories
 {
     public static class ConnectionStringFactory
     {

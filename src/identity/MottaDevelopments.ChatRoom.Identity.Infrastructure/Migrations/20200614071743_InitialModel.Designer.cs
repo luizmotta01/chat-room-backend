@@ -10,7 +10,7 @@ using MottaDevelopments.ChatRoom.Identity.Infrastructure.EntityFramework.Context
 namespace MottaDevelopments.ChatRoom.Identity.Infrastructure.Migrations
 {
     [DbContext(typeof(IdentityDbContext))]
-    [Migration("20200606032429_InitialModel")]
+    [Migration("20200614071743_InitialModel")]
     partial class InitialModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using MottaDevelopments.MicroServices.Infrastructure.EntityFramework.Context;
-using MottaDevelopments.MicroServices.Infrastructure.EntityFramework.Factories;
+using MottaDevelopments.MicroServices.Infrastructure.Factories;
 
 namespace MottaDevelopments.MicroServices.Infrastructure.EntityFramework
 {

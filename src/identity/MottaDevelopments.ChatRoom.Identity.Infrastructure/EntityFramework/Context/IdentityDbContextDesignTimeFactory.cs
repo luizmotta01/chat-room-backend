@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using MottaDevelopments.MicroServices.Infrastructure.EntityFramework.Factories;
+using MottaDevelopments.MicroServices.Infrastructure.Factories;
 using MottaDevelopments.MicroServices.Infrastructure.Mediator;
 
 namespace MottaDevelopments.ChatRoom.Identity.Infrastructure.EntityFramework.Context
