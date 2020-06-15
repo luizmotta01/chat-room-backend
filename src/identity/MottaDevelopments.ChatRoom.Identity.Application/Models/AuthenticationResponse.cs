@@ -22,5 +22,7 @@ namespace MottaDevelopments.ChatRoom.Identity.Application.Models
             JwtToken = jwtToken;
             RefreshToken = refreshToken;
         }
+
+
     }
 }

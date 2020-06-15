@@ -26,9 +26,7 @@ namespace MottaDevelopments.ChatRoom.Identity.Api.Controllers.v1
         {
             var response = await _mediator.Send(new AuthenticateCommand(request, IpAddress()));
 
-            return response.StatusCode == HttpStatusCode.Unauthorized
-                ? (IActionResult) Unauthorized(response.Messages)
-                : Ok(response.Payload);
+            return Ok(response);
         }
     }
 }

@@ -21,18 +21,12 @@ namespace MottaDevelopments.ChatRoom.Identity.Application.CommandHandlers
         public async Task<Response<AuthenticationResponse>> Handle(AuthenticateCommand request, CancellationToken cancellationToken)
         {
 
-            var authenticationResponse = await _authenticationService.Authenticate(request.Payload, request.IpAddress);
+            return await _authenticationService.Authenticate(request.Payload, request.IpAddress);
             
-            var response = new Response<AuthenticationResponse>(authenticationResponse);
+            
 
-            if (!(authenticationResponse is null))
-                return response;
+            
 
-            response.StatusCode = HttpStatusCode.Unauthorized;
-
-            response.Messages.Add("No account was found with the informed credentials.");
-
-            return response;
-        }
+            }
     }
 }

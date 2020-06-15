@@ -15,23 +15,23 @@ namespace MottaDevelopments.MicroServices.Application.JwtBearer
             var key = Encoding.ASCII.GetBytes(secret);
 
             services.AddAuthentication(scheme =>
+            {
+                scheme.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                scheme.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(scheme =>
+            {
+                scheme.RequireHttpsMetadata = false;
+                scheme.SaveToken = true;
+                scheme.TokenValidationParameters = new TokenValidationParameters
                 {
-                    scheme.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                    scheme.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                })
-                .AddJwtBearer(scheme =>
-                {
-                    scheme.RequireHttpsMetadata = false;
-                    scheme.SaveToken = true;
-                    scheme.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(key),
-                        ValidateIssuer = false,
-                        ValidateAudience = false,
-                        ClockSkew = TimeSpan.Zero
-                    };
-                });
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    ClockSkew = TimeSpan.Zero
+                };
+            });
 
             return services;
         }

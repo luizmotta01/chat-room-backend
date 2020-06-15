@@ -9,7 +9,7 @@ namespace MottaDevelopments.MicroServices.Application.Models
 
         public HttpStatusCode StatusCode { get; set; }
 
-        public List<string> Messages { get; set; }
+        public List<string> Messages { get; set; } = new List<string>();
         
         public Response(T payload)
         {
