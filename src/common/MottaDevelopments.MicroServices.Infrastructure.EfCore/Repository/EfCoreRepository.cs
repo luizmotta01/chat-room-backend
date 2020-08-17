@@ -7,15 +7,15 @@ using Microsoft.EntityFrameworkCore;
 using MottaDevelopments.MicroServices.Domain.Entities;
 using MottaDevelopments.MicroServices.Domain.Repository;
 using MottaDevelopments.MicroServices.Domain.UnitOfWork;
-using MottaDevelopments.MicroServices.Infrastructure.EntityFramework.Context;
+using MottaDevelopments.MicroServices.Infrastructure.EfCore.Context;
 
-namespace MottaDevelopments.MicroServices.Infrastructure.EntityFramework.Repository
+namespace MottaDevelopments.MicroServices.Infrastructure.EfCore.Repository
 {
-    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class, IEntity
+    public class EfCoreRepository<TEntity> : IEfCoreRepository<TEntity> where TEntity : class, IEntity
     {
         private readonly DbContextBase _context;
 
-        public Repository(DbContextBase context) => _context = context;
+        public EfCoreRepository(DbContextBase context) => _context = context;
 
         public IUnitOfWork UnitOfWork => _context;
         

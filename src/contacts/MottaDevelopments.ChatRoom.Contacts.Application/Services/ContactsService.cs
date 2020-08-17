@@ -8,42 +8,42 @@ namespace MottaDevelopments.ChatRoom.Contacts.Application.Services
 {
     public class ContactsService : IContactsService
     {
-        private readonly IRepository<User> _repository;
+        private readonly IEfCoreRepository<User> _efCoreRepository;
 
-        public ContactsService(IRepository<User> repository)
+        public ContactsService(IEfCoreRepository<User> efCoreRepository)
         {
-            _repository = repository;
+            _efCoreRepository = efCoreRepository;
         }
 
         public async Task<bool> AddNewUser(User user)
         {
-            _repository.Add(user);
+            _efCoreRepository.Add(user);
 
-            return await _repository.UnitOfWork.SaveEntitiesAsync();
+            return await _efCoreRepository.UnitOfWork.SaveEntitiesAsync();
         }
 
         public async Task<bool> AddNewContact(User user, Contact contact)
         {
-            var account = await _repository.FindEntityAsync(entity => entity.Id == user.Id);
+            var account = await _efCoreRepository.FindEntityAsync(entity => entity.Id == user.Id);
 
             if(account is null)
                 throw new Exception($"User {user.Username} was not found in the database.");
             
             account.Contacts.Add(contact);
 
-            return await _repository.UnitOfWork.SaveEntitiesAsync();
+            return await _efCoreRepository.UnitOfWork.SaveEntitiesAsync();
         }
 
         public async Task<IEnumerable<Contact>> GetUserContacts(Guid userId)
         {
-            var account = await _repository.FindEntityAsync(entity => entity.Id == userId);
+            var account = await _efCoreRepository.FindEntityAsync(entity => entity.Id == userId);
 
             return GetUserContacts(account);
         }
         
         public async Task<IEnumerable<Contact>> GetUserContacts(string username)
         {
-            var account = await _repository.FindEntityAsync(entity => entity.Username == username);
+            var account = await _efCoreRepository.FindEntityAsync(entity => entity.Username == username);
 
             return GetUserContacts(account);
         }

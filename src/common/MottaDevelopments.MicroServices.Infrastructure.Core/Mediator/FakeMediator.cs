@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using MediatR;
 
-namespace MottaDevelopments.MicroServices.Infrastructure.Mediator
+namespace MottaDevelopments.MicroServices.Infrastructure.Core.Mediator
 {
     public class FakeMediator : IMediator
     {

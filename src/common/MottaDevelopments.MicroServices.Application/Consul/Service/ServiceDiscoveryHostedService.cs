@@ -2,8 +2,9 @@
 using System.Threading.Tasks;
 using Consul;
 using Microsoft.Extensions.Hosting;
+using MottaDevelopments.MicroServices.Application.Consul.Config;
 
-namespace MottaDevelopments.MicroServices.Application.Services
+namespace MottaDevelopments.MicroServices.Application.Consul.Service
 {
     public class ServiceDiscoveryHostedService : IHostedService
     {

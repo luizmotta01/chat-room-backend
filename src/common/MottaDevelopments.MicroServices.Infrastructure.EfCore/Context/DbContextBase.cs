@@ -7,9 +7,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
 using MottaDevelopments.MicroServices.Domain.UnitOfWork;
-using MottaDevelopments.MicroServices.Infrastructure.Mediator;
+using MottaDevelopments.MicroServices.Infrastructure.EfCore.Mediator;
 
-namespace MottaDevelopments.MicroServices.Infrastructure.EntityFramework.Context
+namespace MottaDevelopments.MicroServices.Infrastructure.EfCore.Context
 {
     public class DbContextBase : DbContext, IUnitOfWork, IDatabaseContext
     {

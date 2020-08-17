@@ -9,6 +9,7 @@ services:
       dockerfile: src/identity/MottaDevelopments.ChatRoom.Api/Dockerfile
     depends_on:
       - sqlserver
+      - mongo
       - rabbitmq
 
   mottadevelopments.chatroom.contacts.api:
@@ -19,6 +20,7 @@ services:
       dockerfile: src/contacts/MottaDevelopments.ChatRoom.Contacts.Api/Dockerfile
     depends_on:
       - sqlserver
+      - mongo
       - rabbitmq
 
   mottadevelopments.chatroom.gateway:
@@ -31,7 +33,7 @@ services:
   consul:
     image: consul:latest
     command: consul agent -dev -log-level=warn -ui -client=0.0.0.0
-    hostname: consul
+    hostname: consulbc
     container_name: consul
   
   sqlserver:
@@ -41,3 +43,15 @@ services:
   rabbitmq:
     container_name: rabbitmq
     image: rabbitmq:3-management
+
+  mongo:
+    image: mongo
+    restart: always
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    depends_on:
+      - mongo
+    
+

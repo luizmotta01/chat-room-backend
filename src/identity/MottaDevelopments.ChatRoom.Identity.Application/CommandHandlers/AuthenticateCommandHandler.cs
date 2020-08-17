@@ -20,13 +20,7 @@ namespace MottaDevelopments.ChatRoom.Identity.Application.CommandHandlers
 
         public async Task<Response<AuthenticationResponse>> Handle(AuthenticateCommand request, CancellationToken cancellationToken)
         {
-
             return await _authenticationService.Authenticate(request.Payload, request.IpAddress);
-            
-            
-
-            
-
-            }
+        }
     }
 }

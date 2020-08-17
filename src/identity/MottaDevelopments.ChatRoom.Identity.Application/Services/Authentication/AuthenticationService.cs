@@ -7,20 +7,21 @@ using MottaDevelopments.ChatRoom.Identity.Application.Models;
 using MottaDevelopments.ChatRoom.Identity.Application.Services.Tokens;
 using MottaDevelopments.ChatRoom.Identity.Domain.Entities;
 using MottaDevelopments.MicroServices.Application.Models;
-using MottaDevelopments.MicroServices.Domain.Repository;
+using MottaDevelopments.MicroServices.Infrastructure.MongoDb;
 
 namespace MottaDevelopments.ChatRoom.Identity.Application.Services.Authentication
 {
     public class AuthenticationService : IAuthenticationService
     {
 
-        private readonly IRepository<Account> _repository;
+        private readonly IMongoDbRepository<Account> _mongoDbRepository;
+        
         private readonly IPasswordHasher<Account> _hasher;
         
-        public AuthenticationService(IRepository<Account> repository, IPasswordHasher<Account> hasher)
+        public AuthenticationService(IPasswordHasher<Account> hasher, IMongoDbRepository<Account> mongoDbRepository)
         {
-            _repository = repository;
             _hasher = hasher;
+            _mongoDbRepository = mongoDbRepository;
         }
 
         public async Task<Response<AuthenticationResponse>> Authenticate(AuthenticationRequest request, string ipAddress)
@@ -31,9 +32,7 @@ namespace MottaDevelopments.ChatRoom.Identity.Application.Services.Authenticatio
 
             if (_hasher.VerifyHashedPassword(account, account.Password, request.Password) == PasswordVerificationResult.Failed)
             {
-                response = response ?? new Response<AuthenticationResponse>();
-                
-                response.StatusCode = HttpStatusCode.Unauthorized;
+                response = new Response<AuthenticationResponse> {StatusCode = HttpStatusCode.Unauthorized};
                 
                 response.Messages.Add(ErrorMessages.WrongPassword());
                 
@@ -47,9 +46,9 @@ namespace MottaDevelopments.ChatRoom.Identity.Application.Services.Authenticatio
 
             account.RefreshTokens.Add(refreshToken);
 
-            _repository.Update(account);
+            await _mongoDbRepository.Update(nameof(Account), account);
 
-            await _repository.UnitOfWork.SaveEntitiesAsync();
+            //await _efCoreRepository.UnitOfWork.SaveEntitiesAsync();
 
             response =
                 new Response<AuthenticationResponse>(new AuthenticationResponse(account, jwtToken, refreshToken.Token))
@@ -74,7 +73,7 @@ namespace MottaDevelopments.ChatRoom.Identity.Application.Services.Authenticatio
 
         private async Task<(Response<AuthenticationResponse>, Account)> ValidateUserCredentials(AuthenticationRequest request)
         {
-            var account = await _repository.FindEntityAsync(acc =>
+            var account = await _mongoDbRepository.FindEntityAsync(nameof(Account),acc =>
                 (acc.Username == request.Username || acc.Email == request.Email));
 
             if (!(account is null)) return (null, account);

@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
 
-namespace MottaDevelopments.MicroServices.Infrastructure.EntityFramework.Context
+namespace MottaDevelopments.MicroServices.Infrastructure.EfCore.Context
 {
     public interface IDatabaseContext
     {

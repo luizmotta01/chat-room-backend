@@ -8,20 +8,21 @@ using MottaDevelopments.ChatRoom.Identity.Domain.DomainEvents;
 using MottaDevelopments.ChatRoom.Identity.Domain.Entities;
 using MottaDevelopments.MicroServices.Application.Models;
 using MottaDevelopments.MicroServices.Domain.Repository;
+using MottaDevelopments.MicroServices.Infrastructure.MongoDb;
 
 namespace MottaDevelopments.ChatRoom.Identity.Application.Services.Registration
 {
     public class RegistrationService : IRegistrationService
     {
-        private readonly IRepository<Account> _repository;
+        private readonly IMongoDbRepository<Account> _mongoDbRepository;
         private readonly IMapper _mapper;
         private readonly IPasswordHasher<Account> _hasher;
 
-        public RegistrationService(IRepository<Account> repository, IMapper mapper, IPasswordHasher<Account> hasher)
+        public RegistrationService(IMapper mapper, IPasswordHasher<Account> hasher, IMongoDbRepository<Account> mongoDbRepository)
         {
-            _repository = repository;
             _mapper = mapper;
             _hasher = hasher;
+            _mongoDbRepository = mongoDbRepository;
         }
 
         public async Task<Response<RegistrationResponse>> Register(RegistrationRequest request)
@@ -48,7 +49,7 @@ namespace MottaDevelopments.ChatRoom.Identity.Application.Services.Registration
         private async Task<Response<RegistrationResponse>> VerifyUserConflicts(RegistrationRequest request)
         {
             var existentAccount = await
-                _repository.FindEntityAsync(acc => acc.Username == request.Username || acc.Email == request.Email);
+                _mongoDbRepository.FindEntityAsync(nameof(Account), acc => acc.Username == request.Username || acc.Email == request.Email);
 
             if (existentAccount is null)
                 return null;
@@ -75,11 +76,9 @@ namespace MottaDevelopments.ChatRoom.Identity.Application.Services.Registration
 
             account.AddDomainEvent(new NewAccountRegistered(account));
 
-            var entity = _repository.Add(account);
+            var entity = await _mongoDbRepository.Add(nameof(Account), account);
 
-            var saved = await _repository.UnitOfWork.SaveEntitiesAsync();
-
-            if (saved)
+            if (!(entity is null))
             {
                 response.Messages.Add(SuccessMessages.UserSuccessfullyRegistered(entity.Username));
                 response.StatusCode = HttpStatusCode.Created;

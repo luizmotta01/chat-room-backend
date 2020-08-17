@@ -23,7 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.2 application", "3.2 appl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MottaDevelopments.MicroServices.Domain", "src\common\MottaDevelopments.MicroServices.Domain\MottaDevelopments.MicroServices.Domain.csproj", "{95AED7AC-8A96-492F-B5AB-DD5618B769DE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MottaDevelopments.MicroServices.Infrastructure", "src\common\MottaDevelopments.MicroServices.Infrastructure\MottaDevelopments.MicroServices.Infrastructure.csproj", "{B72D2406-2A32-4441-8F6C-0A91572ABE05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MottaDevelopments.MicroServices.Infrastructure.EfCore", "src\common\MottaDevelopments.MicroServices.Infrastructure.EfCore\MottaDevelopments.MicroServices.Infrastructure.EfCore.csproj", "{B72D2406-2A32-4441-8F6C-0A91572ABE05}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.1 api", "2.1 api", "{62FFA4EB-101D-45EF-B123-7CBDE32646C0}"
 EndProject
@@ -41,6 +41,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.dockerignore = .dockerignore
 		.gitignore = .gitignore
+		docker-compose.override.sample = docker-compose.override.sample
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -80,9 +81,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MottaDevelopments.MicroServ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MottaDevelopments.MicroServices.EventBus.Extensions", "src\common\MottaDevelopments.MicroServices.EventBus.Extensions\MottaDevelopments.MicroServices.EventBus.Extensions.csproj", "{7D1F06ED-4B8C-47F2-B0DB-073E4BD665B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MottaDevelopments.MicroServices.EventBus", "src\common\MottaDevelopments.MicroServices.EventBus\MottaDevelopments.MicroServices.EventBus.csproj", "{D4F66BAB-5363-47DE-9711-297AAEE46DFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MottaDevelopments.MicroServices.EventBus", "src\common\MottaDevelopments.MicroServices.EventBus\MottaDevelopments.MicroServices.EventBus.csproj", "{D4F66BAB-5363-47DE-9711-297AAEE46DFF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MottaDevelopments.MicroServices.EventBus.Infrastructure", "src\common\MottaDevelopments.MicroServices.EventBus.Infrastructure\MottaDevelopments.MicroServices.EventBus.Infrastructure.csproj", "{67609A41-D62D-4720-9943-AD8B725A1731}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MottaDevelopments.MicroServices.EventBus.Infrastructure", "src\common\MottaDevelopments.MicroServices.EventBus.Infrastructure\MottaDevelopments.MicroServices.EventBus.Infrastructure.csproj", "{67609A41-D62D-4720-9943-AD8B725A1731}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MottaDevelopments.MicroServices.Infrastructure.MongoDb", "src\common\MottaDevelopments.MicroServices.Infrastructure.MongoDb\MottaDevelopments.MicroServices.Infrastructure.MongoDb.csproj", "{C6230DAD-4C85-42D4-A0CF-97E2566CC19B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MottaDevelopments.MicroServices.Infrastructure.Core", "src\common\MottaDevelopments.MicroServices.Infrastructure.Core\MottaDevelopments.MicroServices.Infrastructure.Core.csproj", "{0FBD0444-0F1A-4880-9527-AA419C422AB3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -298,6 +303,30 @@ Global
 		{67609A41-D62D-4720-9943-AD8B725A1731}.Release|x64.Build.0 = Release|Any CPU
 		{67609A41-D62D-4720-9943-AD8B725A1731}.Release|x86.ActiveCfg = Release|Any CPU
 		{67609A41-D62D-4720-9943-AD8B725A1731}.Release|x86.Build.0 = Release|Any CPU
+		{C6230DAD-4C85-42D4-A0CF-97E2566CC19B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6230DAD-4C85-42D4-A0CF-97E2566CC19B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6230DAD-4C85-42D4-A0CF-97E2566CC19B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C6230DAD-4C85-42D4-A0CF-97E2566CC19B}.Debug|x64.Build.0 = Debug|Any CPU
+		{C6230DAD-4C85-42D4-A0CF-97E2566CC19B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C6230DAD-4C85-42D4-A0CF-97E2566CC19B}.Debug|x86.Build.0 = Debug|Any CPU
+		{C6230DAD-4C85-42D4-A0CF-97E2566CC19B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6230DAD-4C85-42D4-A0CF-97E2566CC19B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6230DAD-4C85-42D4-A0CF-97E2566CC19B}.Release|x64.ActiveCfg = Release|Any CPU
+		{C6230DAD-4C85-42D4-A0CF-97E2566CC19B}.Release|x64.Build.0 = Release|Any CPU
+		{C6230DAD-4C85-42D4-A0CF-97E2566CC19B}.Release|x86.ActiveCfg = Release|Any CPU
+		{C6230DAD-4C85-42D4-A0CF-97E2566CC19B}.Release|x86.Build.0 = Release|Any CPU
+		{0FBD0444-0F1A-4880-9527-AA419C422AB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FBD0444-0F1A-4880-9527-AA419C422AB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FBD0444-0F1A-4880-9527-AA419C422AB3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0FBD0444-0F1A-4880-9527-AA419C422AB3}.Debug|x64.Build.0 = Debug|Any CPU
+		{0FBD0444-0F1A-4880-9527-AA419C422AB3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0FBD0444-0F1A-4880-9527-AA419C422AB3}.Debug|x86.Build.0 = Debug|Any CPU
+		{0FBD0444-0F1A-4880-9527-AA419C422AB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FBD0444-0F1A-4880-9527-AA419C422AB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FBD0444-0F1A-4880-9527-AA419C422AB3}.Release|x64.ActiveCfg = Release|Any CPU
+		{0FBD0444-0F1A-4880-9527-AA419C422AB3}.Release|x64.Build.0 = Release|Any CPU
+		{0FBD0444-0F1A-4880-9527-AA419C422AB3}.Release|x86.ActiveCfg = Release|Any CPU
+		{0FBD0444-0F1A-4880-9527-AA419C422AB3}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -338,6 +367,8 @@ Global
 		{7D1F06ED-4B8C-47F2-B0DB-073E4BD665B7} = {6F849D87-3882-4A9B-8CA9-43422299605A}
 		{D4F66BAB-5363-47DE-9711-297AAEE46DFF} = {6F849D87-3882-4A9B-8CA9-43422299605A}
 		{67609A41-D62D-4720-9943-AD8B725A1731} = {6F849D87-3882-4A9B-8CA9-43422299605A}
+		{C6230DAD-4C85-42D4-A0CF-97E2566CC19B} = {D1803A17-7022-47B4-BB9C-B80934B5AEDF}
+		{0FBD0444-0F1A-4880-9527-AA419C422AB3} = {D1803A17-7022-47B4-BB9C-B80934B5AEDF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {91012471-B936-40A8-8F49-C41826CF8879}

@@ -3,6 +3,8 @@ using Consul;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MottaDevelopments.MicroServices.Application.Consul.Config;
+using MottaDevelopments.MicroServices.Application.Consul.Service;
 using MottaDevelopments.MicroServices.Application.Services;
 
 namespace MottaDevelopments.MicroServices.Application.Consul

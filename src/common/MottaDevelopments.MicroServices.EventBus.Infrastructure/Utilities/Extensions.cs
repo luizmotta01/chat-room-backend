@@ -5,8 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using MottaDevelopments.MicroServices.Application.Services;
 using MottaDevelopments.MicroServices.EventBus.Infrastructure.Context;
 using MottaDevelopments.MicroServices.EventBus.Infrastructure.Services;
-using MottaDevelopments.MicroServices.Infrastructure.EntityFramework.Context;
-using MottaDevelopments.MicroServices.Infrastructure.Factories;
+using MottaDevelopments.MicroServices.Infrastructure.Core.Factories;
 
 namespace MottaDevelopments.MicroServices.EventBus.Infrastructure.Utilities
 {

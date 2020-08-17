@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using MottaDevelopments.MicroServices.Infrastructure.Factories;
+using MottaDevelopments.MicroServices.Infrastructure.Core.Factories;
 
 namespace MottaDevelopments.MicroServices.EventBus.Infrastructure.Context
 {

@@ -7,7 +7,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using MottaDevelopments.MicroServices.Application.Helpers;
 using MottaDevelopments.MicroServices.Application.Services;
-using MottaDevelopments.MicroServices.Infrastructure.EntityFramework.Context;
+using MottaDevelopments.MicroServices.Infrastructure.EfCore.Context;
+
 
 namespace MottaDevelopments.MicroServices.Application.Behaviors
 {

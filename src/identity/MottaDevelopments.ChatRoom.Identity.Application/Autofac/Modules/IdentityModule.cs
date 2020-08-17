@@ -4,8 +4,11 @@ using MottaDevelopments.ChatRoom.Identity.Application.Services.Authentication;
 using MottaDevelopments.ChatRoom.Identity.Application.Services.Registration;
 using MottaDevelopments.ChatRoom.Identity.Domain.Entities;
 using MottaDevelopments.MicroServices.Domain.Repository;
-using MottaDevelopments.MicroServices.Infrastructure.Dapper;
-using MottaDevelopments.MicroServices.Infrastructure.EntityFramework.Repository;
+using MottaDevelopments.MicroServices.Infrastructure.Core.Dapper;
+using MottaDevelopments.MicroServices.Infrastructure.EfCore.Repository;
+using MottaDevelopments.MicroServices.Infrastructure.MongoDb;
+using MottaDevelopments.MicroServices.Infrastructure.MongoDb.Context;
+using MottaDevelopments.MicroServices.Infrastructure.MongoDb.Settings;
 
 namespace MottaDevelopments.ChatRoom.Identity.Application.Autofac.Modules
 {
@@ -13,6 +16,23 @@ namespace MottaDevelopments.ChatRoom.Identity.Application.Autofac.Modules
     {
         protected override void Load(ContainerBuilder builder)
         {
+            builder.Register(componentContext =>
+                {
+                    var settings = new MongoDbSettings();
+                    settings.FromEnvironmentVariables();
+                    return settings;
+                })
+                .As<IMongoDbSettings>()
+                .InstancePerLifetimeScope();
+
+            builder.RegisterType<MongoDbContextBase>()
+                .As<IMongoDbContextBase>()
+                .InstancePerLifetimeScope();
+
+            builder.RegisterType<MongoDbRepository<Account>>()
+                .As<IMongoDbRepository<Account>>()
+                .InstancePerLifetimeScope();
+
             builder.RegisterType<PasswordHasher<Account>>()
                 .As<IPasswordHasher<Account>>()
                 .InstancePerLifetimeScope();
@@ -21,8 +41,8 @@ namespace MottaDevelopments.ChatRoom.Identity.Application.Autofac.Modules
                 .As<IDatabaseConnectionFactory>()
                 .InstancePerLifetimeScope();
 
-            builder.RegisterType<Repository<Account>>()
-                .As<IRepository<Account>>()
+            builder.RegisterType<EfCoreRepository<Account>>()
+                .As<IEfCoreRepository<Account>>()
                 .InstancePerLifetimeScope();
 
             builder.RegisterType<AuthenticationService>()

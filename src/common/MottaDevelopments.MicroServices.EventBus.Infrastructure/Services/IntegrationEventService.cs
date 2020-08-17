@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using MassTransit;
 using MottaDevelopments.MicroServices.Application.Services;
 using MottaDevelopments.MicroServices.EventBus.Events;
-using MottaDevelopments.MicroServices.Infrastructure.EntityFramework.Context;
+using MottaDevelopments.MicroServices.Infrastructure.EfCore.Context;
 
 namespace MottaDevelopments.MicroServices.EventBus.Infrastructure.Services
 {

@@ -2,7 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using MottaDevelopments.ChatRoom.Contacts.Domain.Entities;
 using MottaDevelopments.ChatRoom.Contacts.Infrastructure.EntityFramework.Configurations;
-using MottaDevelopments.MicroServices.Infrastructure.EntityFramework.Context;
+using MottaDevelopments.MicroServices.Infrastructure.EfCore.Context;
+
 
 namespace MottaDevelopments.ChatRoom.Contacts.Infrastructure.EntityFramework.Context
 {

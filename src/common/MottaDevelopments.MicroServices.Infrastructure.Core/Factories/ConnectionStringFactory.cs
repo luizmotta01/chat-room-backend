@@ -1,6 +1,6 @@
 ﻿using MottaDevelopments.MicroServices.Domain.EnvironmentVariables;
 
-namespace MottaDevelopments.MicroServices.Infrastructure.Factories
+namespace MottaDevelopments.MicroServices.Infrastructure.Core.Factories
 {
     public static class ConnectionStringFactory
     {
@@ -9,9 +9,7 @@ namespace MottaDevelopments.MicroServices.Infrastructure.Factories
 
         public static string GetConnectionStringFromEnvironmentVariables() => _defaultMask.ReplaceEnvironmentVariables(DatabaseEnvironmentVariables.GetDatabaseEnvironmentVariables());
 
-        public static string GetIntegrationEventConnectionStringFromEnvironmentVariables() =>
-            _defaultMask.ReplaceIntegrationEventEnvironmentVariables(DatabaseEnvironmentVariables
-                .GetIntegrationEventsEnvironmentVariables());
+        public static string GetIntegrationEventConnectionStringFromEnvironmentVariables() => _defaultMask.ReplaceIntegrationEventEnvironmentVariables(DatabaseEnvironmentVariables.GetIntegrationEventsEnvironmentVariables());
 
         private static string ReplaceEnvironmentVariables(this string connectionString, DatabaseEnvironmentVariables environmentVariables) => connectionString
             .Replace(DatabaseEnvironmentVariables.DbHostPlaceholder, environmentVariables.DbHost)

@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Text;
+﻿using System.Data;
 using Microsoft.Data.SqlClient;
-using MottaDevelopments.MicroServices.Infrastructure.Factories;
+using MottaDevelopments.MicroServices.Infrastructure.Core.Factories;
 
-namespace MottaDevelopments.MicroServices.Infrastructure.Dapper
+namespace MottaDevelopments.MicroServices.Infrastructure.Core.Dapper
 {
     public class DatabaseConnectionFactory : IDatabaseConnectionFactory
     {

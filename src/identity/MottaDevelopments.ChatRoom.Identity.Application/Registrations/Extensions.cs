@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using MottaDevelopments.ChatRoom.Identity.Infrastructure.EntityFramework.Context;
-using MottaDevelopments.MicroServices.Infrastructure.EntityFramework;
-using MottaDevelopments.MicroServices.Infrastructure.EntityFramework.Context;
+using MottaDevelopments.MicroServices.Infrastructure.EfCore;
+using MottaDevelopments.MicroServices.Infrastructure.EfCore.Context;
+
 
 namespace MottaDevelopments.ChatRoom.Identity.Application.Registrations
 {
@@ -18,11 +18,5 @@ namespace MottaDevelopments.ChatRoom.Identity.Application.Registrations
 
             return serviceCollection;
         }
-
-        public static async Task<IServiceProvider> MigrateDbContext(this IServiceProvider serviceProvider)
-        {
-            return await serviceProvider.MigrateDbContext<IdentityDbContext>();
-        }
-
     }
 }

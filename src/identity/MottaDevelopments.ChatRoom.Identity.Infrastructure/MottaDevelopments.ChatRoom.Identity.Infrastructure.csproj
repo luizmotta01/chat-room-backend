@@ -12,7 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\common\MottaDevelopments.MicroServices.Infrastructure\MottaDevelopments.MicroServices.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\common\MottaDevelopments.MicroServices.Infrastructure.EfCore\MottaDevelopments.MicroServices.Infrastructure.EfCore.csproj" />
+    <ProjectReference Include="..\..\common\MottaDevelopments.MicroServices.Infrastructure.MongoDb\MottaDevelopments.MicroServices.Infrastructure.MongoDb.csproj" />
     <ProjectReference Include="..\MottaDevelopments.ChatRoom.Identity.Domain\MottaDevelopments.ChatRoom.Identity.Domain.csproj" />
   </ItemGroup>
 

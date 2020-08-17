@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MottaDevelopments.MicroServices.Application.Services
+namespace MottaDevelopments.MicroServices.Application.Consul.Config
 {
     public class ServiceDiscoveryConfiguration
     {

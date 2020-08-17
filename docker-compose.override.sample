@@ -1,0 +1,94 @@
+version: '3.4'
+
+services:
+  mottadevelopments.chatroom.identity.api:
+    ports:
+      - "80"
+    environment:
+      - __JWT_SECRET__=umsegredograndepracaralhosenaoessaporranaofunciona
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - __MONGODB_DATABASE__=Identity
+      - __MONGODB_HOST__=mongo
+      - __MONGODB_PORT__=27017
+      - __MONGODB_USER__=root
+      - __MONGODB_PASSWORD__=YOUR_PASSOWRD_HERE
+      - ServiceConfig__serviceDiscoveryAddress=http://consul:8500
+      - ServiceConfig__serviceAddress=http://mottadevelopments-chatroom-identity:80
+      - ServiceConfig__serviceName=mottadevelopments-chatroom-identity
+      - ServiceConfig__serviceId=1
+      - __DB_HOST__=sqlserver
+      - __DB_NAME__=Identity
+      - __IE_DB_NAME__=IntegrationEvents
+      - __SA_PASSWORD__=YOUR_PASSOWRD_HERE
+      - __EVENT_BUS_HOST__=rabbitmq
+      - __EVENT_BUS_USER__=YOUR_USER_HERE
+      - __EVENT_BUS_PASSWORD__YOUR_PASSOWRD_HERE
+
+  mottadevelopments.chatroom.contacts.api:
+    ports:
+      - "80"
+    environment:
+      - __JWT_SECRET__=umsegredograndepracaralhosenaoessaporranaofunciona
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - __MONGODB_DATABASE__=Contacts
+      - __MONGODB_HOST__=mongo
+      - __MONGODB_PORT__=27017
+      - __MONGODB_USER__=root
+      - __MONGODB_PASSWORD__=YOUR_PASSOWRD_HERE
+      - ServiceConfig__serviceDiscoveryAddress=http://consul:8500
+      - ServiceConfig__serviceAddress=http://mottadevelopments-chatroom-contacts:80
+      - ServiceConfig__serviceName=mottadevelopments-chatroom-contacts
+      - ServiceConfig__serviceId=1
+      - __DB_HOST__=sqlserver
+      - __DB_NAME__=Contacts
+      - __IE_DB_NAME__=IntegrationEvents
+      - __SA_PASSWORD__=YOUR_PASSOWRD_HERE
+      - __EVENT_BUS_HOST__=YOUR_USER_HERE
+      - __EVENT_BUS_USER__=YOUR_USER_HERE
+      - __EVENT_BUS_PASSWORD__=YOUR_PASSOWRD_HERE
+
+  mottadevelopments.chatroom.gateway:
+    environment:
+      - __JWT_SECRET__=umsegredograndepracaralhosenaoessaporranaofunciona
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "5100:80"
+      - "5001:443"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+  sqlserver:
+    environment:
+      - SA_PASSWORD=YOUR_PASSOWRD_HERE
+      - ACCEPT_EULA=Y
+    ports:
+      - "1433:1433"
+
+  rabbitmq:
+    environment:
+      - RABBITMQ_DEFAULT_USER=YOUR_USER_HERE
+      - RABBITMQ_DEFAULT_PASS=YOUR_PASSOWRD_HERE
+    ports:
+      - "5672:5672"
+      - "15600:15672"
+
+  mongo:
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=YOUR_PASSOWRD_HERE
+    ports:
+      - "27017:27017"
+
+  mongo-express:
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=YOUR_USER_HERE
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=YOUR_PASSOWRD_HERE
+    ports:
+      - "8081:8081"
+      
+  consul:
+    ports:
+      - "8500"
+

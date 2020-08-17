@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MottaDevelopments.MicroServices.Application\MottaDevelopments.MicroServices.Application.csproj" />
+    <ProjectReference Include="..\MottaDevelopments.MicroServices.Infrastructure.EfCore\MottaDevelopments.MicroServices.Infrastructure.EfCore.csproj" />
   </ItemGroup>
 
 </Project>

@@ -26,8 +26,6 @@ namespace MottaDevelopments.ChatRoom.Identity.Api
 
             await policy.ExecuteAsync(async () =>
             {
-                await host.Services.MigrateDbContext();
-                
                 await host.Services.MigrateIntegrationEventDbContext();
             });
             

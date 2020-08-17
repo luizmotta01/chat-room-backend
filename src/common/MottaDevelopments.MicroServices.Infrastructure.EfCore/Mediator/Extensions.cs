@@ -1,11 +1,10 @@
-﻿
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using MottaDevelopments.MicroServices.Domain.Entities;
 
-namespace MottaDevelopments.MicroServices.Infrastructure.Mediator
+namespace MottaDevelopments.MicroServices.Infrastructure.EfCore.Mediator
 {
     public static class Extensions
     {

@@ -7,7 +7,7 @@ using MottaDevelopments.MicroServices.Domain.UnitOfWork;
 
 namespace MottaDevelopments.MicroServices.Domain.Repository
 {
-    public interface IRepository<TEntity> where  TEntity : IEntity
+    public interface IEfCoreRepository<TEntity> where  TEntity : IEntity
     {
         IUnitOfWork UnitOfWork { get; }
 
