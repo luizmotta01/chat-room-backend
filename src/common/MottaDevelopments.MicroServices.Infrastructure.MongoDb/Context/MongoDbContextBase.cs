@@ -19,6 +19,8 @@ namespace MottaDevelopments.MicroServices.Infrastructure.MongoDb.Context
             Logger = logger;
             var client = new MongoClient(settings.ConnectionString);
             Database = client.GetDatabase(settings.Database);
+  
+
         }
     }
 }
