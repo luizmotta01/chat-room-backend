@@ -28,7 +28,7 @@ namespace MottaDevelopments.MicroServices.Application.Behaviors
         public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
         {
             var response = default(TResponse);
-
+            
             var typeName = request.GetGenericTypeName();
 
             try

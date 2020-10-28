@@ -213,7 +213,7 @@ namespace MottaDevelopments.MicroServices.EventBus.Extensions.RabbitMq
             {
                 host = rabbitMqBusFactoryConfigurator.Host((configuration as EventBusConfigUri)?.HostAddress, h =>
                 {
-                    h.UseRetry(r => r.Interval(5, TimeSpan.FromSeconds(1)));
+                    //h.UseRetry(r => r.Interval(5, TimeSpan.FromSeconds(1)));
                     h.Username(configuration.User);
                     h.Password(configuration.Password);
                 });

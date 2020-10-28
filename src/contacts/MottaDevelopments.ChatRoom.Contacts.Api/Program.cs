@@ -2,10 +2,12 @@ using System.Threading.Tasks;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using MottaDevelopments.ChatRoom.Contacts.Infrastructure.EntityFramework.Context;
 using MottaDevelopments.MicroServices.Application.Factories;
 using MottaDevelopments.MicroServices.Application.Logging;
 using MottaDevelopments.MicroServices.Application.Polly;
 using MottaDevelopments.MicroServices.EventBus.Infrastructure.Utilities;
+using MottaDevelopments.MicroServices.Infrastructure.EfCore;
 using Serilog;
 
 namespace MottaDevelopments.ChatRoom.Contacts.Api
@@ -22,7 +24,11 @@ namespace MottaDevelopments.ChatRoom.Contacts.Api
 
             var policy = Policies.GetAsyncRetryPolicy(Log.Logger);
 
-            await policy.ExecuteAsync(async () => { await host.Services.MigrateIntegrationEventDbContext(); });
+            await policy.ExecuteAsync(async () =>
+            {
+                await host.Services.MigrateIntegrationEventDbContext();
+                await host.Services.MigrateDbContext<ContactsDbContext>();
+            });
 
             await host.RunAsync();
         }

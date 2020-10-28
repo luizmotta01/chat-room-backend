@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MottaDevelopments.ChatRoom.Contacts.Application.Autofac;
+using MottaDevelopments.ChatRoom.Contacts.Application.Registrations;
 using MottaDevelopments.MicroServices.Application.Consul;
 using MottaDevelopments.MicroServices.Application.JwtBearer;
 using MottaDevelopments.MicroServices.EventBus.Extensions.Configuration;
@@ -41,6 +42,7 @@ namespace MottaDevelopments.ChatRoom.Contacts.Api
                             .SetIsOriginAllowed((host) => true)
                             .AllowCredentials());
                 })
+                .AddContactsDbContext()
                 .AddIntegrationEventDbContext()
                 .AddCommonEventBusServices(ApplicationAssembly)
                 .AddIntegrationEvents()

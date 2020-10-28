@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\common\MottaDevelopments.MicroServices.Infrastructure.EfCore\MottaDevelopments.MicroServices.Infrastructure.EfCore.csproj" />
-    <ProjectReference Include="..\..\common\MottaDevelopments.MicroServices.Infrastructure\MottaDevelopments.MicroServices.Infrastructure.EfCore.csproj" />
     <ProjectReference Include="..\MottaDevelopments.ChatRoom.Contacts.Domain\MottaDevelopments.ChatRoom.Contacts.Domain.csproj" />
   </ItemGroup>
 

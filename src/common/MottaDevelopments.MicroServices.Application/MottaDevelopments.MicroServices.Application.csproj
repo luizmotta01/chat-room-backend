@@ -7,7 +7,6 @@
   <ItemGroup>
     <ProjectReference Include="..\MottaDevelopments.MicroServices.EventBus\MottaDevelopments.MicroServices.EventBus.csproj" />
     <ProjectReference Include="..\MottaDevelopments.MicroServices.Infrastructure.EfCore\MottaDevelopments.MicroServices.Infrastructure.EfCore.csproj" />
-    <ProjectReference Include="..\MottaDevelopments.MicroServices.Infrastructure\MottaDevelopments.MicroServices.Infrastructure.EfCore.csproj" />
   </ItemGroup>
 
   <ItemGroup>

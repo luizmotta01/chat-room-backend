@@ -3,10 +3,12 @@ using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using MottaDevelopments.ChatRoom.Identity.Application.Registrations;
+using MottaDevelopments.ChatRoom.Identity.Infrastructure.EntityFramework.Context;
 using MottaDevelopments.MicroServices.Application.Factories;
 using MottaDevelopments.MicroServices.Application.Logging;
 using MottaDevelopments.MicroServices.Application.Polly;
 using MottaDevelopments.MicroServices.EventBus.Infrastructure.Utilities;
+using MottaDevelopments.MicroServices.Infrastructure.EfCore;
 using Serilog;
 
 
@@ -27,6 +29,7 @@ namespace MottaDevelopments.ChatRoom.Identity.Api
             await policy.ExecuteAsync(async () =>
             {
                 await host.Services.MigrateIntegrationEventDbContext();
+                await host.Services.MigrateDbContext<IdentityDbContext>();
             });
             
             await host.RunAsync();
